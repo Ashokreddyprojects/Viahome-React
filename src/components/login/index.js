@@ -20,7 +20,8 @@ class login extends Component {
             LoginPageRedirect:false,
             forgotPasswordErrors:"",
             ForgotPasswordShow: false,
-            email:""
+            email:"",
+            UserLoginTypeCondition:""
             
 		}
  
@@ -116,6 +117,9 @@ class login extends Component {
         this.setState({ ForgetPasswordMsg:nextProps.ForgetPasswordMsg})
 		console.log("nextProps User Login",nextProps.UserLoginMsg)
         console.log("nextProps User Data",nextProps.UserLoginData)
+          console.log("nextProps User Type",nextProps.UserLoginType)
+        this.setState({UserLoginTypeCondition:nextProps.UserLoginType})
+        
         if(nextProps.UserLoginData.condition)
             {
                 this.setState({ LoginPageRedirect:true})
@@ -135,14 +139,22 @@ class login extends Component {
     
     
   render() {
-      const { LoginPageRedirect }=this.state
+      const { LoginPageRedirect, UserLoginTypeCondition }=this.state
       const { UserLoginData } =this.props
      
-      if(LoginPageRedirect)
+      if((LoginPageRedirect) && (UserLoginTypeCondition=="Admin"))
         {
 
             return   <Redirect to={{
         pathname: '/AdminDashBoard',
+        state: { UserLoginData }
+      }}/>
+        }
+          if((LoginPageRedirect) && (UserLoginTypeCondition=="User"))
+        {
+
+            return   <Redirect to={{
+        pathname: '/UserDashBoard',
         state: { UserLoginData }
       }}/>
         }
@@ -266,7 +278,8 @@ function mapStateToProps(state, actions) {
     if (state.fetchLogin && state.fetchLogin.msg) {
 		console.log("User Login", state.fetchLogin.msg)
 		return { UserLoginMsg: state.fetchLogin.msg,
-		UserLoginData: state.fetchLogin  }
+        UserLoginData: state.fetchLogin,
+     UserLoginType :state.fetchLogin.Type }
 
     }
     else {

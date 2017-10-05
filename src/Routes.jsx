@@ -26,6 +26,10 @@ import forgetPassword from './components/forgetPassword'
 // import DashBoardProjects from './components/Admin/Projects';
 // import DashBoardProjectsEdit from './components/Admin/ProjectsEdit';
 
+//user Part
+
+import UserDashBoard from './components/User/DashBoard'
+
 export const history = createHistory();
 //console.log('Router', history.location.pathname);
 //var url=history.location.pathname
@@ -60,6 +64,9 @@ const Routes = () => (
             
             {/* <Route path='/DashBoardProjects' component={DashBoardProjects} />
             <Route path='/DashBoardProjectsEdit' component={DashBoardProjectsEdit} />  */}
+
+            {/* User Part */}
+            <Route path='/UserDashBoard' component={UserDashBoard} />
   
         </div>
         
