@@ -1,0 +1,56 @@
+import React, {Component} from 'react';
+import  { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import * as AdminConstants from '../AdminConstants';
+import { FMRRentsDeleteFetchData } from '../../../AdminAction/FMRRents';
+
+class TableRow extends Component {
+
+	removeFMRRents(selectedData) 
+	
+	{
+				var UrL3 = AdminConstants.ApiCallUrl+'deletefmrRents';
+		
+				let id={
+					"id":selectedData._id,
+					
+				}
+				   return this.props.dispatch(FMRRentsDeleteFetchData(UrL3, id));
+
+				   console.log("selectedData", selectedData)
+				  
+			}
+
+    render () {
+
+		const { data, remove1, Name } = this.props
+
+        return (
+
+            <tr>
+               <td>{this.props.data.Area_Name}</td>
+						<td className="text-right">{this.props.data.Median_Income_2017}</td>
+						<td className="text-right">{this.props.data.Person_1}</td>
+						<td className="text-right">{this.props.data.People_2}</td>
+						<td className="text-right">{this.props.data.People_3}</td>
+						<td className="text-right">{this.props.data.People_4}</td>
+						<td className="text-right">{this.props.data.People_5}</td>
+						<td className="text-right">{this.props.data.People_6}</td>
+						<td className="text-right">{this.props.data.People_7}</td>
+						<td className="text-right">{this.props.data.People_8}</td>
+						<td>{this.props.data.State}</td>   
+                       <td>
+
+                                    <Link to={{pathname: '/DashBoardMTSPRentsEdit', state:{Name, data}}}  className="edit2"><i data-placement="top" data-toggle="tooltip" className="fa fa-edit editicon" data-original-title="Edit"></i></Link>
+
+                                    {/* <a href="javascript:(void);" data-toggle="modal" data-target="#delete" className="delete2"><i data-placement="top" data-toggle="tooltip" className="fa fa-trash bootbox-confirm removeicon" data-original-title="Delete"></i></a> */}
+								
+									<span onClick={remove1.bind(this,data)} className="delete2 couserHandSymbol"><i data-placement="top" data-toggle="tooltip" className="fa fa-trash bootbox-confirm removeicon" data-original-title="Delete"></i></span> 
+								</td>
+            </tr>
+        )
+    }
+}
+
+export default TableRow;

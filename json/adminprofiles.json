@@ -1,0 +1,114 @@
+{ 
+    "_id" : ObjectId("59ae70ec4631112d8caef512"), 
+    "email" : " Ashokkumar.penamalli123@gmail.com", 
+    "username" : "blj8082", 
+    "password" : "$2a$10$5cPj2cOMrEihnI0VeC5YauN3AhQCjIPB.eFTzwnkpg5O11qc0o3yG", 
+    "firstName" : "Ashok Reddy", 
+    "lastName" : "Penamalli", 
+    "city" : "Hyd", 
+    "address" : "Nlr", 
+    "createdDate" : ISODate("2017-09-05T09:39:56.644+0000"), 
+    "__v" : NumberInt(0), 
+    "phone" : null
+}
+{ 
+    "_id" : ObjectId("59b68b020540cf201465c5d9"), 
+    "email" : "anuja@gmail.com", 
+    "username" : "A", 
+    "password" : "$2a$10$eS8sxQ3U8gBHvZGmBvWKZ.fVZGQthowE468W1Kk3c2RKI71h6LwoS", 
+    "firstName" : "Anuja", 
+    "lastName" : "Reddy", 
+    "city" : "Hyd", 
+    "address" : "tpty", 
+    "createdDate" : ISODate("2017-09-11T13:09:22.075+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("59c0b8fef98a731ae0a2e4c7"), 
+    "firstName" : "Ashok Reddy", 
+    "lastName" : "Penamalli", 
+    "email" : "ashokkumarr.betabulls@gmail.com", 
+    "username" : "blj8083432", 
+    "password" : "$2a$10$U20CFG1H33V71MpYZ89wp.FF2oiQMc8XN8ogwtLdEBCbwf8kRwew6", 
+    "city" : "NA", 
+    "address" : "NA", 
+    "phone" : "NA", 
+    "active" : true, 
+    "removeAccount" : true, 
+    "createdDate" : ISODate("2017-09-19T06:28:14.362+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("59c121adc23a6c3f6c9177ca"), 
+    "firstName" : "hh", 
+    "lastName" : "k", 
+    "email" : null, 
+    "username" : "hariharan", 
+    "password" : "$2a$10$1qNSRZjPJs8UgiyRZgEiOOgye8EJv125wkjvZNEM2iPKErDheHY8O", 
+    "city" : "Hyd", 
+    "address" : "Nsad", 
+    "phone" : null, 
+    "active" : true, 
+    "removeAccount" : true, 
+    "createdDate" : ISODate("2017-09-19T13:54:53.633+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("59c2153662f9c735f833d3ec"), 
+    "firstName" : "hariharan", 
+    "lastName" : "k", 
+    "email" : "hariharan8@yahoo.com", 
+    "username" : "hhgupta", 
+    "password" : "$2a$10$JiQBYadQjVU6YEwWV2ZUO.5MoN9E.3GEJzFnai8ubEH1YClAPwgHS", 
+    "city" : "Hyd", 
+    "address" : "Nlr", 
+    "phone" : null, 
+    "active" : true, 
+    "removeAccount" : true, 
+    "createdDate" : ISODate("2017-09-20T07:13:58.195+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("59c215cd62f9c735f833d3ed"), 
+    "email" : "hariaharan8@yahoo.com", 
+    "username" : "hhhgupta", 
+    "firstName" : "hari", 
+    "lastName" : "haran", 
+    "city" : "NA", 
+    "address" : "NA", 
+    "active" : true, 
+    "removeAccount" : true, 
+    "phone" : "NA", 
+    "createdDate" : ISODate("2017-09-20T07:16:29.539+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("59c23a585f53450a3cc4956f"), 
+    "firstName" : "SriSaiNath", 
+    "lastName" : null, 
+    "email" : null, 
+    "username" : null, 
+    "password" : "$2a$10$sGClSTd5YGr4vLK86zPWteJ47rEAnTz66Nhf4gio2qG7MyG1i9dEu", 
+    "city" : null, 
+    "address" : null, 
+    "phone" : null, 
+    "active" : true, 
+    "removeAccount" : true, 
+    "createdDate" : ISODate("2017-09-20T09:52:24.503+0000"), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("59c25e202517a23b8426c8fe"), 
+    "firstName" : "DURGA2", 
+    "lastName" : "RAO", 
+    "email" : "DUFRGARAO@gmail.com", 
+    "username" : "DURGA", 
+    "password" : "$2a$10$mghDh/Evog55nAJC/dFGM.m6CNa21dHFDBtSiOY0S22wbNPeOYow.", 
+    "city" : "Hyd", 
+    "address" : "Nlr", 
+    "phone" : null, 
+    "active" : true, 
+    "removeAccount" : true, 
+    "createdDate" : ISODate("2017-09-20T12:25:04.872+0000"), 
+    "__v" : NumberInt(0)
+}
