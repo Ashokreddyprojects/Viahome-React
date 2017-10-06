@@ -31,15 +31,15 @@ class TableRow extends Component {
 
             <tr>
                 <td>{this.props.data.Area_Name}</td>
-                <td className="text-right">{this.props.data.Median_Income_2017}</td>
-                <td className="text-right">{this.props.data.Person_1}</td>
-                <td className="text-right">{this.props.data.People_2}</td>
-                <td className="text-right">{this.props.data.People_3}</td>
-                <td className="text-right">{this.props.data.People_4}</td>
-                <td className="text-right">{this.props.data.People_5}</td>
-                <td className="text-right">{this.props.data.People_6}</td>
-                <td className="text-right">{this.props.data.People_7}</td>
-                <td className="text-right">{this.props.data.People_8}</td>
+                <td className="text-right" width="160px">{this.props.data.Median_Income_2017}</td>
+                <td className="text-right" width="90px">{this.props.data.Person_1}</td>
+                <td className="text-right" width="90px">{this.props.data.People_2}</td>
+                <td className="text-right" width="90px">{this.props.data.People_3}</td>
+                <td className="text-right" width="90px">{this.props.data.People_4}</td>
+                <td className="text-right" width="90px">{this.props.data.People_5}</td>
+                <td className="text-right" width="90px">{this.props.data.People_6}</td>
+                <td className="text-right" width="90px">{this.props.data.People_7}</td>
+                <td className="text-right" width="100px">{this.props.data.People_8}</td>
                 <td>
 
                     <Link data-placement="left" data-toggle="tooltip" data-original-title="Edit" to={{ pathname: '/DashBoardMedianIncomeEdit', state: {data, Name} }} className="edit2"><i  className="fa fa-edit editicon" ></i></Link>

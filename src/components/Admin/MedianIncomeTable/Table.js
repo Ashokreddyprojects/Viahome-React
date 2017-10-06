@@ -19,17 +19,17 @@ class Table extends Component {
                     <thead>
 
                         <tr className="tblalignmentmedianincome">
-                              <th><span className="pull-left">Area Name</span></th>
-                                <th>2017&nbsp;Median&nbsp;Income<br />($)</th>
-                                <th>1 Person <br />($)</th>
-                                <th>2 People <br />($)</th>
-                                <th>3 People <br />($)</th>
-                                <th>4 People <br />($)</th>
-                                <th>5 People <br />($)</th>
-                                <th>6 People <br />($)</th>
-                                <th>7 People <br />($)</th>
-                                <th>8 People <br />($)</th>
-                                <th width="160"><span className="pull-left">Actions</span></th>
+                                <th><span className="pull-left">Area Name</span></th>
+                                <th width="160px">2017 Median<br/>Income ($)</th>
+                                <th width="90px">1 Person <br />($)</th>
+                                <th width="90px">2 People <br />($)</th>
+                                <th width="90px">3 People <br />($)</th>
+                                <th width="90px">4 People <br />($)</th>
+                                <th width="90px">5 People <br />($)</th>
+                                <th width="90px">6 People <br />($)</th>
+                                <th width="90px">7 People <br />($)</th>
+                                <th width="90px">8 People <br />($)</th>
+                                <th width="100px">Actions</th>
                         </tr>
                     </thead>
 
