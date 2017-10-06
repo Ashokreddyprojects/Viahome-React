@@ -1609,3 +1609,39 @@ height: 23px;
 .inputplaceholder{
     background-color: transparent;
 }
+/*table responsive on reactjs*/
+.icon-align{padding: 7px 30px !important;}
+.icon-alignhead{padding-right: 50px;}
+/*browse files deleted responsive */
+@media only screen and (min-width:768px) and (max-width:1023px){
+ .addbtn{
+       padding-top: 11px;
+    margin-top: -49px;
+    height: 40px;
+    
+}
+}
+@media only screen and (min-width:375px) and (max-width:425px){
+ .addbtn{
+       padding-top: 11px;
+    margin-top: -61px;
+    height: 40px;
+    
+}
+.panel {
+   
+    margin-top: -5px !important;
+}
+}
+.btn-default:active:focus, .btn-default:active:hover{
+        background-color: #338B7A;
+    border-color: #338B7A;
+}
+/* Change Autocomplete styles in Chrome*/
+#reg-login input:-webkit-autofill,
+#reg-login input:-webkit-autofill:hover, 
+#reg-login input:-webkit-autofill:focus
+#reg-login input:-webkit-autofill, 
+ {
+  -webkit-box-shadow: 0 0 0px 1000px grey inset !important; background-color:grey !important;
+}

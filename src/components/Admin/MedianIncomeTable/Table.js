@@ -20,16 +20,16 @@ class Table extends Component {
 
                         <tr className="tblalignmentmedianincome">
                                 <th><span className="pull-left">Area Name</span></th>
-                                <th width="160px">2017 Median<br/>Income ($)</th>
-                                <th width="90px">1 Person <br />($)</th>
-                                <th width="90px">2 People <br />($)</th>
-                                <th width="90px">3 People <br />($)</th>
-                                <th width="90px">4 People <br />($)</th>
-                                <th width="90px">5 People <br />($)</th>
-                                <th width="90px">6 People <br />($)</th>
-                                <th width="90px">7 People <br />($)</th>
-                                <th width="90px">8 People <br />($)</th>
-                                <th width="100px">Actions</th>
+                                <th>2017&nbsp;Median<br/><span align="center">Income ($)</span></th>
+                                <th>1&nbsp;Person <br /><span align="center">($)</span></th>
+                                <th>2&nbsp;People <br /><span align="center">($)</span></th>
+                                <th>3&nbsp;People <br /><span align="center">($)</span></th>
+                                <th>4&nbsp;People <br /><span align="center">($)</span></th>
+                                <th>5&nbsp;People <br /><span align="center">($)</span></th>
+                                <th>6&nbsp;People <br /><span align="center">($)</span></th>
+                                <th>7&nbsp;People <br /><span align="center">($)</span></th>
+                                <th>8&nbsp;People <br /><span align="center">($)</span></th>
+                                <th width="100px"><span className="pull-left">Actions</span></th>
                         </tr>
                     </thead>
 

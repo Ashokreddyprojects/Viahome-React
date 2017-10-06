@@ -20,7 +20,7 @@ class Table extends Component {
                       <tr className="tblalignmentmedianincome">
 								
                                 <th><span className="pull-left">Area Name</span></th>
-                                <th>2017&nbsp;Median&nbsp;Income<br /><span align="center">($)</span></th>
+                                <th>2017&nbsp;Median<br/><span align="center">Income&nbsp;($)</span></th>
                                 <th>1&nbsp;Person <br /><span align="center">($)</span></th>
                                 <th>2&nbsp;People <br /><span align="center">($)</span></th>
                                 <th>3&nbsp;People <br /><span align="center">($)</span></th>

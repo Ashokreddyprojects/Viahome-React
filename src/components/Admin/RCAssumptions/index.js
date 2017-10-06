@@ -217,7 +217,7 @@ componentWillMount()
 					</div>  */}
                 </div>
 				<div className="col-md-6 col-sm-12 col-xs-12 brfileadjust no-padding-right">
-					<div className="form-group col-md-10 col-sm-8 col-xs-12">
+					{/*<div className="form-group col-md-10 col-sm-8 col-xs-12">
 						<input type="file" name="img[]" className="file" />
 						<div className="input-group pull-right">
 						  <span className="input-group-addon"><i className="fa fa-file"></i></span>
@@ -226,8 +226,8 @@ componentWillMount()
 							<button className="browse srchicon default-btn btn" type="button"><i className="fa fa-search"></i> Browse</button>
 						  </span>
 						</div>
-					</div>
-					<div className="col-md-2 col-sm-4 col-xs-12">
+					</div>*/}
+					<div className="col-md-12 col-sm-12 col-xs-12">
 						<Link className="default-btn pull-right addbtn" to={{ pathname: '/DashBoardRCAssumptionsAdd', state: data}}>Add</Link>
 					</div>
 					

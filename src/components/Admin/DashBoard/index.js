@@ -57,7 +57,7 @@ class DashBoard extends Component {
                             <header className="panel-heading main-bg">
                                 <div className="row">
                                     <div className="col-md-4 col-xs-12 col-sm-4 headiconspl"><span>Projects List</span></div>
-                                    <div className="col-md-4 col-xs-12 col-sm-4 headiconstp"><span>Total Projects:120</span></div>
+                                    <div className="col-md-4 col-xs-12 col-sm-4 headiconstp"><span>Total Projects: {this.props.DashBoardApiSize}</span></div>
                                     <div className="col-md-4 col-xs-12 col-sm-4 headiconstu"><span>Total Users:100</span></div>
                                 </div>
 
@@ -207,8 +207,10 @@ function mapStateToProps(state, actions) {
 
     if (state.fetchDashBoardData && state.fetchDashBoardData.App && state.fetchDashBoardData.App.length > 0) {
         console.log("DashBoard", state.fetchDashBoardData)
+  
         //debugger;
-        return { DashBoardApi: state.fetchDashBoardData.App }
+        return { DashBoardApi: state.fetchDashBoardData.App,
+        DashBoardApiSize:state.fetchDashBoardData.App.length }
     } else {
         return {};
     }

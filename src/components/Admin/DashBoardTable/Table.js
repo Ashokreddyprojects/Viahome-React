@@ -30,7 +30,7 @@ class Table extends Component{
                             <tr>
 								<th>Project Name</th>
                                 <th>Project Type</th>
-                                <th>Number of Units</th>
+                                <th className="text-right">Number of Units</th>
                                 <th className="text-right">Total Project Size</th>
                                 <th>FMR Area</th>
                                
