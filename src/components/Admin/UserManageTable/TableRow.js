@@ -22,7 +22,7 @@ activeConditon=<img onClick={account1.bind(this,data)} src="images/deactivate1.p
 
 
       <tr>
-        <td>{this.props.id}</td>
+        <td>{this.props.id+1}</td>
         <td>{data.firstName} {data.lastName}</td>
         <td>{data.email}</td>
         <td>{data.phone}</td>

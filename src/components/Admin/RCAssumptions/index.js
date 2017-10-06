@@ -7,6 +7,7 @@ import Table from '../RCAssumptionsTable/Table';
 import { fetchRcAssumptionsData , fetchRCAssumptionDeleteFetchData} from '../../../AdminAction/RcAssumptions';
  import * as AdminConstants from '../AdminConstants';
  import { Button, Modal } from 'react-bootstrap';
+ import Spinner from 'react-spinner-material';
 
 
 var AdminData={
@@ -113,7 +114,9 @@ class RCAssumptions extends Component {
             showModal:false,
 			deleteRCAssumptions:"",
 			urlRemove:"",
-			removeobj:{}
+            removeobj:{},
+              spinnerShow: true,
+        spinnerShowDisplay: true
 		}
 
 		this.removeRCA = this.removeRCA.bind(this);
@@ -137,7 +140,7 @@ class RCAssumptions extends Component {
             "type" : removeData.type
 
         }
-        this.setState({deleteRCAssumptions: removeData.type})
+        this.setState({deleteRCAssumptions: removeData.Repair_Level})
         this.setState({urlRemove : Url})
         this.setState({removeobj : id})
 
@@ -171,6 +174,12 @@ componentWillMount()
    {
     
   	this.autofreshData()
+
+    }
+    componentWillReceiveProps(nextProps) {
+          // console.log("Hello World")
+      this.setState({spinnerShow: false})
+      this.setState({spinnerShowDisplay: false})
 
     }
 
@@ -235,6 +244,15 @@ componentWillMount()
                         Demolition
                     </header>
                     <div className="panel-body table-responsive">
+                        <center>
+                        <div className="mask" style={{ display: this.state.spinnerShowDisplay ? 'block' : 'none' }} width={300}  height={500}>
+              <Spinner style={{"position":"relative", "top":"60%"}} width={300}
+                  height={500}
+                  spinnerColor={"#338b7a"}
+                  spinnerWidth={5}
+                  show={this.state.spinnerShow} />
+           </div>
+           </center>
 
                         <Table header={DEMOLITION}
                         data={this.props.RCAssumptionsApi}

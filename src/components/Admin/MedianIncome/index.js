@@ -7,6 +7,7 @@ import Table from '../MedianIncomeTable/Table';
 import { fetchMedianIncomeData, medianIncomeDeleteFetchData } from '../../../AdminAction/medianIncomeActions';
 import * as AdminConstants from '../AdminConstants';
 import { Button, Modal } from 'react-bootstrap';
+import Spinner from 'react-spinner-material';
 
  
 var AdminData={
@@ -30,7 +31,9 @@ class MedianIncome extends Component {
          showModal:false,
          deleteMedianIncomeName:"",
          urlRemove:"",
-         removeobj:{}
+         removeobj:{},
+        spinnerShow: true,
+        spinnerShowDisplay: true
        
     }
 
@@ -106,7 +109,12 @@ this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state
  this.autoFreashData()
 
     }
+       componentWillReceiveProps(nextProps) {
+          // console.log("Hello World")
+      this.setState({spinnerShow: false})
+      this.setState({spinnerShowDisplay: false})
 
+    }
    
 
    
@@ -176,6 +184,15 @@ this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state
                     <div className="panel-body table-responsive">
                     {/* <center>  <span className="dataRemoveSucessMsg">{this.props.fetchMedianIncomeDeleteMsg}</span></center> */}
                         {/* <Table data = {tableData} /> */}
+<center>
+                        <div className="mask" style={{ display: this.state.spinnerShowDisplay ? 'block' : 'none' }} width={300}  height={500}>
+              <Spinner style={{"position":"relative", "top":"60%"}} width={300}
+                  height={500}
+                  spinnerColor={"#338b7a"}
+                  spinnerWidth={5}
+                  show={this.state.spinnerShow} />
+           </div>
+           </center>
                         <Table data = {this.props.MedianIncomeApi} remove={this.removeMedianIncome} Name={data} />
 
                         {/* <table className="table  table-hover general-table mangaeicons responsivetbl-adjustadmindashboard">

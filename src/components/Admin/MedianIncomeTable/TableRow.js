@@ -40,7 +40,7 @@ class TableRow extends Component {
                 <td className="text-right" width="90px">{this.props.data.People_6}</td>
                 <td className="text-right" width="90px">{this.props.data.People_7}</td>
                 <td className="text-right" width="100px">{this.props.data.People_8}</td>
-                <td>
+                <td className="center-block">
 
                     <Link data-placement="left" data-toggle="tooltip" data-original-title="Edit" to={{ pathname: '/DashBoardMedianIncomeEdit', state: {data, Name} }} className="edit2"><i  className="fa fa-edit editicon" ></i></Link>
 
