@@ -84,7 +84,7 @@ class Header extends Component {
                         <i className="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </Link>*/}
-            <Link  to={{pathname: '/AdminDashBoard', state: Name}}  className="active">
+            <Link  to={{pathname: '/AdminDashBoard', state: Name}}  className="active" refresh="true">
                         <i className="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </Link>
@@ -95,9 +95,9 @@ class Header extends Component {
                         <span>Configuration</span>
                     </a>
                     <ul className="sub">
-                       <li><NavLink data-placement="top" data-toggle="tooltip"  data-original-title="Median  Income" to={{pathname: '/DashBoardMedianIncome', state: Name}} className="active" data-placement="top" data-toggle="tooltip"  data-original-title="Median  Income">Median Income</NavLink></li>
-                        <li><NavLink data-placement="top" data-toggle="tooltip"  data-original-title="Multifamily Tax Subsidy Program"  to={{pathname: '/DashBoardMTSPRents', state: Name}} className="active" data-placement="top" data-toggle="tooltip"  data-original-title="Multifamily Tax Subsidy Program">MTSP Rents</NavLink></li>
-                       <li><NavLink  data-placement="top" data-toggle="tooltip"  data-original-title="Renovation Cost Assumptions" to={{pathname: '/DashBoardRCAssumptions', state: Name}} className="active" data-placement="top" data-toggle="tooltip"  data-original-title="Renovation Cost Assumptions">RC Assumptions</NavLink></li>
+                       <li><NavLink data-placement="top" data-toggle="tooltip"  data-original-title="Median  Income" to={{pathname: '/DashBoardMedianIncome', state: Name}} className="active" >Median Income</NavLink></li>
+                        <li><NavLink data-placement="top" data-toggle="tooltip"  data-original-title="Multifamily Tax Subsidy Program"  to={{pathname: '/DashBoardMTSPRents', state: Name}} className="active" >MTSP Rents</NavLink></li>
+                       <li><NavLink  data-placement="top" data-toggle="tooltip"  data-original-title="Renovation Cost Assumptions" to={{pathname: '/DashBoardRCAssumptions', state: Name}} className="active">RC Assumptions</NavLink></li>
 
                     </ul>
                 </li>

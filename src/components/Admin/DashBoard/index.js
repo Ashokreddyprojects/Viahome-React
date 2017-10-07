@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import Table from '../DashBoardTable/Table';
 import { fetchDashBoardData } from '../../../AdminAction/actions';
+import { fetchUserData} from '../../../AdminAction/userActions';
 import * as AdminConstants from '../AdminConstants';
 
 
@@ -12,10 +13,15 @@ class DashBoard extends Component {
 
     componentWillMount() {
         // console.log("Hi")
+            var Url = AdminConstants.ApiCallUrl + 'findUsers';
+        var paramString1 = "list";
+
+        this.props.dispatch(fetchUserData(Url, paramString1));
         var Url2 = AdminConstants.ApiCallUrl+'findProjects';
         var paramString = "list";
 
         this.props.dispatch(fetchDashBoardData(Url2, paramString));
+      
 
     }
     render() {
@@ -54,11 +60,11 @@ class DashBoard extends Component {
                         {/* page start*/}
 
                         <section className="panel">
-                            <header className="panel-heading main-bg">
+                            <header className="panel-heading main-bg pnl-heading">
                                 <div className="row">
                                     <div className="col-md-4 col-xs-12 col-sm-4 headiconspl"><span>Projects List</span></div>
                                     <div className="col-md-4 col-xs-12 col-sm-4 headiconstp"><span>Total Projects: {this.props.DashBoardApiSize}</span></div>
-                                    <div className="col-md-4 col-xs-12 col-sm-4 headiconstu"><span>Total Users:100</span></div>
+                                    <div className="col-md-4 col-xs-12 col-sm-4 headiconstu"><span>Total Users:{this.props.UsersAPICount}</span></div>
                                 </div>
 
                             </header>
@@ -202,7 +208,7 @@ DashBoard = reduxForm({
 
 function mapStateToProps(state, actions) {
 
-    console.log("App", state.fetchDashBoardData.App)
+   
 
 
     if (state.fetchDashBoardData && state.fetchDashBoardData.App && state.fetchDashBoardData.App.length > 0) {
@@ -210,7 +216,8 @@ function mapStateToProps(state, actions) {
   
         //debugger;
         return { DashBoardApi: state.fetchDashBoardData.App,
-        DashBoardApiSize:state.fetchDashBoardData.App.length }
+        DashBoardApiSize:state.fetchDashBoardData.App.length,
+        UsersAPICount: state.fetchUserData.App.length }
     } else {
         return {};
     }

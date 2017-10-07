@@ -8,14 +8,29 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+
 // import * as AdminConstants from '../AdminConstants';
 // import { Button, Modal } from 'react-bootstrap';
 
 
 class forgetPassword extends Component {
+      constructor() {
+
+        super();
+   
+        
+    }
+
+
+componentWillReceiveProps(nextProps){
+  if (nextProps.location.state === 'desiredState') {
+   alert("Hello")
+  }
+}
   render() {
 
-    console.log("hello")
+   console.log("Hello  World")
+    console.log(this.props.location.state)
     return (
       <div className="login-body">
     <div className="container">

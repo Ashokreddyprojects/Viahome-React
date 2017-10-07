@@ -21,7 +21,10 @@ import DashBoardRCAssumptionsEdit from './components/Admin/RCAssumptionsEdit';
 import DashBoardRCAssumptionsAdd from './components/Admin/RCAssumptionsAdd';
 
 import DashBoardUserManage from './components/Admin/UserManage';
+
 import forgetPassword from './components/forgetPassword'
+import rediRectPage from './components/rediRectPage'
+
 
 // import DashBoardProjects from './components/Admin/Projects';
 // import DashBoardProjectsEdit from './components/Admin/ProjectsEdit';
@@ -40,6 +43,8 @@ const Routes = () => (
             <Route exact path='/' component={login} />
             <Route path='/Register' component={register} />
              <Route path='/forgetPassword' component={forgetPassword} />
+             <Route path='/rediRectPage/:id/:userId' component={rediRectPage} />
+             
 
 
             <Route path='/AdminDashBoard' component={DashBoardContent} />

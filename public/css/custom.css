@@ -1632,6 +1632,7 @@ height: 23px;
    
     margin-top: -5px !important;
 }
+.pnl-heading{margin-top: 20px;}
 }
 .btn-default:active:focus, .btn-default:active:hover{
         background-color: #338B7A;
@@ -1645,3 +1646,14 @@ height: 23px;
  {
   -webkit-box-shadow: 0 0 0px 1000px grey inset !important; background-color:grey !important;
 }
+
+
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    background-color: #338B7A;
+    border-color: #338B7A;
+    color: #fff;
+}
+
+.danger-btn:hover{ background-color: #e30707 !important;
+    border-color: #e30707 !important; 

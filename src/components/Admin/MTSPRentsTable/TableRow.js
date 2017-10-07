@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import * as AdminConstants from '../AdminConstants';
 import { FMRRentsDeleteFetchData } from '../../../AdminAction/FMRRents';
+import NumberFormat from 'react-number-format';
 
 class TableRow extends Component {
 
@@ -18,7 +19,7 @@ class TableRow extends Component {
 				}
 				   return this.props.dispatch(FMRRentsDeleteFetchData(UrL3, id));
 
-				   console.log("selectedData", selectedData)
+				 //  console.log("selectedData", selectedData)
 				  
 			}
 
@@ -30,19 +31,19 @@ class TableRow extends Component {
 
             <tr>
                <td>{this.props.data.Area_Name}</td>
-						<td className="text-right">{this.props.data.Median_Income_2017}</td>
-						<td className="text-right">{this.props.data.Person_1}</td>
-						<td className="text-right">{this.props.data.People_2}</td>
-						<td className="text-right">{this.props.data.People_3}</td>
-						<td className="text-right">{this.props.data.People_4}</td>
-						<td className="text-right">{this.props.data.People_5}</td>
-						<td className="text-right">{this.props.data.People_6}</td>
-						<td className="text-right">{this.props.data.People_7}</td>
-						<td className="text-right">{this.props.data.People_8}</td>
+						<td className="text-right"><NumberFormat value={this.props.data.Median_Income_2017.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
+						<td className="text-right"><NumberFormat value={this.props.data.Person_1.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
+						<td className="text-right"><NumberFormat value={this.props.data.People_2.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
+						<td className="text-right"><NumberFormat value={this.props.data.People_3.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
+						<td className="text-right"><NumberFormat value={this.props.data.People_4.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
+						<td className="text-right"><NumberFormat value={this.props.data.People_5.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
+						<td className="text-right"><NumberFormat value={this.props.data.People_6.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
+						<td className="text-right"><NumberFormat value={this.props.data.People_7.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
+						<td className="text-right"><NumberFormat value={this.props.data.People_8.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
 						<td>{this.props.data.State}</td>   
                        <td>
 
-                                    <Link to={{pathname: '/DashBoardMTSPRentsEdit', state:{Name, data}}}  className="edit2"><i data-placement="top" data-toggle="tooltip" className="fa fa-edit editicon" data-original-title="Edit"></i></Link>
+                                    <Link to={{pathname: '/DashBoardMTSPRentsEdit', state:{Name, data}}}  className="edit2" refresh="true"><i data-placement="top" data-toggle="tooltip" className="fa fa-edit editicon" data-original-title="Edit"></i></Link>
 
                                     {/* <a href="javascript:(void);" data-toggle="modal" data-target="#delete" className="delete2"><i data-placement="top" data-toggle="tooltip" className="fa fa-trash bootbox-confirm removeicon" data-original-title="Delete"></i></a> */}
 								

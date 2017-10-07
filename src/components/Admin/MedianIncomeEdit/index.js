@@ -159,6 +159,7 @@ class MedianIncomeEdit extends Component {
             let Url = AdminConstants.ApiCallUrl + 'updateMedianIncome'
 
             this.props.dispatch(medianIncomeUpadeteFetchData(Url, updateData));
+            this.setState({ showModal: true })
 
         }
         {
@@ -269,28 +270,28 @@ class MedianIncomeEdit extends Component {
                                                     <div className="col-md-6">
                                                         <div className="form-group cust-form-group renovationcostadjustments_text">
                                                             <label htmlFor="inputsm">2017 Median Income ($)</label>
-                                                            <input className="form-control input-sm" id="inputsm" type="text" pattern="[0-9]*" name="Median_Income_2017" defaultValue={medianIncome.Median_Income_2017} />
+                                                            <input className="form-control input-sm" id="inputsm" type="text"  name="Median_Income_2017" defaultValue={medianIncome.Median_Income_2017} />
                                                             <span className="ErrorsMsgDisplay">{this.state.errors[1]}</span>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
                                                         <div className="form-group cust-form-group renovationcostadjustments_text">
                                                             <label htmlFor="inputsm">1 Person ($)</label>
-                                                            <input className="form-control input-sm" id="inputsm" type="text" pattern="[0-9]*" name="Person_1" defaultValue={medianIncome.Person_1} />
+                                                            <input className="form-control input-sm" id="inputsm" type="text"  name="Person_1" defaultValue={medianIncome.Person_1} />
                                                             <span className="ErrorsMsgDisplay">{this.state.errors[2]}</span>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
                                                         <div className="form-group cust-form-group renovationcostadjustments_text">
                                                             <label htmlFor="inputsm">2 Person ($)</label>
-                                                            <input className="form-control input-sm" id="inputsm" type="text" pattern="[0-9]*" name="People_2" defaultValue={medianIncome.People_2} />
+                                                            <input className="form-control input-sm" id="inputsm" type="text"  name="People_2" defaultValue={medianIncome.People_2} />
                                                             <span className="ErrorsMsgDisplay">{this.state.errors[3]}</span>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
                                                         <div className="form-group cust-form-group renovationcostadjustments_text">
                                                             <label htmlFor="inputsm">3 People ($)</label>
-                                                            <input className="form-control input-sm" id="inputsm" type="text" pattern="[0-9]*" name="People_3" defaultValue={medianIncome.People_3} />
+                                                            <input className="form-control input-sm" id="inputsm" type="text"  name="People_3" defaultValue={medianIncome.People_3} />
                                                             <span className="ErrorsMsgDisplay">{this.state.errors[4]}</span>
                                                         </div>
                                                     </div>
@@ -298,35 +299,35 @@ class MedianIncomeEdit extends Component {
                                                     <div className="col-md-6">
                                                         <div className="form-group cust-form-group renovationcostadjustments_text">
                                                             <label htmlFor="inputsm">4 People ($)</label>
-                                                            <input className="form-control input-sm" id="inputsm" type="text" pattern="[0-9]*" name="People_4" defaultValue={medianIncome.People_4} />
+                                                            <input className="form-control input-sm" id="inputsm" type="text"  name="People_4" defaultValue={medianIncome.People_4} />
                                                             <span className="ErrorsMsgDisplay">{this.state.errors[5]}</span>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
                                                         <div className="form-group cust-form-group renovationcostadjustments_text">
                                                             <label htmlFor="inputsm">5 People ($)</label>
-                                                            <input className="form-control input-sm" id="inputsm" type="text" pattern="[0-9]*" name="People_5" defaultValue={medianIncome.People_5} />
+                                                            <input className="form-control input-sm" id="inputsm" type="text"  name="People_5" defaultValue={medianIncome.People_5} />
                                                             <span className="ErrorsMsgDisplay">{this.state.errors[6]}</span>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
                                                         <div className="form-group cust-form-group renovationcostadjustments_text">
                                                             <label htmlFor="inputsm">6 People</label>
-                                                            <input className="form-control input-sm" id="inputsm" type="text" pattern="[0-9]*" name="People_6" defaultValue={medianIncome.People_6} />
+                                                            <input className="form-control input-sm" id="inputsm" type="text"  name="People_6" defaultValue={medianIncome.People_6} />
                                                             <span className="ErrorsMsgDisplay">{this.state.errors[7]}</span>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
                                                         <div className="form-group cust-form-group renovationcostadjustments_text">
                                                             <label htmlFor="inputsm">7 People ($)</label>
-                                                            <input className="form-control input-sm" id="inputsm" type="text" pattern="[0-9]*" name="People_7" defaultValue={medianIncome.People_7} />
+                                                            <input className="form-control input-sm" id="inputsm" type="text"  name="People_7" defaultValue={medianIncome.People_7} />
                                                             <span className="ErrorsMsgDisplay">{this.state.errors[8]}</span>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
                                                         <div className="form-group cust-form-group renovationcostadjustments_text">
                                                             <label htmlFor="inputsm">8 People ($)</label>
-                                                            <input className="form-control input-sm" id="inputsm" type="text" pattern="[0-9]*" name="People_8" defaultValue={medianIncome.People_8} />
+                                                            <input className="form-control input-sm" id="inputsm" type="text"  name="People_8" defaultValue={medianIncome.People_8} />
                                                             <span className="ErrorsMsgDisplay">{this.state.errors[9]}</span>
                                                         </div>
                                                     </div>

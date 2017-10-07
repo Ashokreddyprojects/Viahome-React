@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import HeadBar from '../Header';
 
 
 class App extends Component {

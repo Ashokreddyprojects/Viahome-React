@@ -141,6 +141,8 @@ class MTSPRentsEdit extends Component {
             let Url = AdminConstants.ApiCallUrl + 'updatefmrRents'
 
             this.props.dispatch(FMRRentsUpadeteFetchData(Url, fmrUpdateData));
+             this.setState({ MTSPShow:true})
+
 
 
 
@@ -162,11 +164,11 @@ class MTSPRentsEdit extends Component {
     }
 
 
+
       componentWillReceiveProps(nextProps) {
         console.log("nextProps Update MTSP Msg", nextProps.fetchFMRRentsUpdatemsg)
          console.log("nextProps Update MTSP condition", nextProps.fetchFMRRentsUpdatecondition)
-         this.setState({ MTSPShow:true})
-
+        
           
        
 
