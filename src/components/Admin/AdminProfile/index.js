@@ -33,7 +33,8 @@ class AdminProfile extends Component {
 			changePswdErrors:[],
 			changePasswordmsg: "",
 			showChangePsw: false,
-			popupCondition:true
+			popupCondition:false,
+			popupCondition2:false
 		}
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -144,6 +145,7 @@ class AdminProfile extends Component {
 		
 					this.props.dispatch(userUpadeteFetchData(Url, updateData));
 					this.setState({popupCondition:true})
+					this.setState({popupCondition2:false})
 		
 				}
 				{
@@ -205,6 +207,7 @@ class AdminProfile extends Component {
 
 			this.props.dispatch(ChangePasswordFetchData(url,newData))
 			this.setState({popupCondition:false})
+			this.setState({popupCondition2:true})
 		}
 		{
 			this.setState({ changePswdErrors: error });
@@ -234,11 +237,13 @@ class AdminProfile extends Component {
 		if(this.state.popupCondition)
 			{
 				this.setState({ showModal: true })
+				this.setState({popupCondition:false})
 
 			}
-			else
+			if (this.state.popupCondition2)
 			{
 				this.setState({ showChangePsw: true })
+				this.setState({popupCondition2:false})
 
 			}
 

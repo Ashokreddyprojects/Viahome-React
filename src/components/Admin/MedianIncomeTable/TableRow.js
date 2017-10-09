@@ -31,7 +31,7 @@ class TableRow extends Component {
 
 
             <tr>
-                <td>{this.props.data.Area_Name}</td>
+                <td width="400px" >{this.props.data.Area_Name}</td>
                 <td className="text-right" ><NumberFormat value={this.props.data.Median_Income_2017.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
                 <td className="text-right"><NumberFormat value={this.props.data.Person_1.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
                 <td className="text-right"><NumberFormat value={this.props.data.People_2.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
@@ -41,7 +41,7 @@ class TableRow extends Component {
                 <td className="text-right"><NumberFormat value={this.props.data.People_6.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
                 <td className="text-right"><NumberFormat value={this.props.data.People_7.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
                 <td className="text-right"><NumberFormat value={this.props.data.People_8.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
-                <td>
+                <td width="100px" style={{"textAlign": "center"}}>
 
                     <Link data-placement="left" data-toggle="tooltip" data-original-title="Edit" to={{ pathname: '/DashBoardMedianIncomeEdit', state: {data, Name} }} className="edit2" refresh="true"><i  className="fa fa-edit editicon" ></i></Link>
 

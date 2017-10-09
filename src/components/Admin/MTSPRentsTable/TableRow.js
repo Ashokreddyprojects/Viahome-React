@@ -30,7 +30,7 @@ class TableRow extends Component {
         return (
 
             <tr>
-               <td>{this.props.data.Area_Name}</td>
+               <td width="400px" >{this.props.data.Area_Name}</td>
 						<td className="text-right"><NumberFormat value={this.props.data.Median_Income_2017.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
 						<td className="text-right"><NumberFormat value={this.props.data.Person_1.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
 						<td className="text-right"><NumberFormat value={this.props.data.People_2.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
@@ -40,7 +40,7 @@ class TableRow extends Component {
 						<td className="text-right"><NumberFormat value={this.props.data.People_6.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
 						<td className="text-right"><NumberFormat value={this.props.data.People_7.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
 						<td className="text-right"><NumberFormat value={this.props.data.People_8.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
-						<td>{this.props.data.State}</td>   
+						<td style={{"textAlign": "center"}}>{this.props.data.State}</td>   
                        <td>
 
                                     <Link to={{pathname: '/DashBoardMTSPRentsEdit', state:{Name, data}}}  className="edit2" refresh="true"><i data-placement="top" data-toggle="tooltip" className="fa fa-edit editicon" data-original-title="Edit"></i></Link>

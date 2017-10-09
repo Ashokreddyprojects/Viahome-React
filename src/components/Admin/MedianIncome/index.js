@@ -124,7 +124,16 @@ this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state
 
     var data=this.props.location.state;
 
-    
+    if(this.props.MedianIncomeApi)
+        {
+            this.setState({spinnerShow: false})
+      this.setState({spinnerShowDisplay: false})  
+            
+        }
+    else
+        {
+            return {}
+        }
     return (
       <div>
          <HeadBar Name={data} >

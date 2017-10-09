@@ -1649,6 +1649,24 @@ height: 23px;
 
 
 
+
+
+	.ErrorsMsgDisplay{
+			color: #D8000C;
+			font-weight: 600;
+			/* background-color: #FFBABA; */
+			 /* background-image: url('https://i.imgur.com/GnyDvKN.png');  */
+		}
+		
+		
+				/* .ErrorsMsgDisplay { */
+			/* border: 1px solid; */
+			/* margin: 10px 0px; */
+			/* padding: 15px 10px 15px 50px; */
+			/* background-repeat: no-repeat; */
+			/* background-position: 10px center; */
+		/* } */
+
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
     background-color: #338B7A;
     border-color: #338B7A;
@@ -1657,3 +1675,4 @@ height: 23px;
 
 .danger-btn:hover{ background-color: #e30707 !important;
     border-color: #e30707 !important; 
+

@@ -30,8 +30,12 @@ import rediRectPage from './components/rediRectPage'
 // import DashBoardProjectsEdit from './components/Admin/ProjectsEdit';
 
 //user Part
+import Header from './components/User/Header'
+import UserDashboard from './components/User/UserDashboard'
 
-import UserDashBoard from './components/User/DashBoard'
+
+
+import DashBoard from './components/User/DashBoard'
 
 export const history = createHistory();
 //console.log('Router', history.location.pathname);
@@ -71,7 +75,9 @@ const Routes = () => (
             <Route path='/DashBoardProjectsEdit' component={DashBoardProjectsEdit} />  */}
 
             {/* User Part */}
-            <Route path='/UserDashBoard' component={UserDashBoard} />
+            <Route path='/DashBoard' component={DashBoard} />
+              <Route path='/UserDashboard' component={UserDashboard} />
+             <Route path='/Header' component={Header} />
   
         </div>
         
