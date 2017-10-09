@@ -33,8 +33,8 @@ class MedianIncome extends Component {
          deleteMedianIncomeName:"",
          urlRemove:"",
          removeobj:{},
-        spinnerShow1: true,
-        spinnerShowDisplay1: true
+        spinnerShow: true,
+        spinnerShowDisplay: true
        
     }
 
@@ -112,8 +112,8 @@ this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state
     }
        componentWillReceiveProps(nextProps) {
           // console.log("Hello World")
-      this.setState({spinnerShow1: false})
-      this.setState({spinnerShowDisplay1: false})
+      this.setState({spinnerShow: false})
+      this.setState({spinnerShowDisplay: false})
 
     }
    
@@ -124,7 +124,8 @@ this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state
 
     var data=this.props.location.state;
 
-    
+
+        
     return (
       <div>
          <HeadBar Name={data} >
@@ -186,12 +187,12 @@ this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state
                     {/* <center>  <span className="dataRemoveSucessMsg">{this.props.fetchMedianIncomeDeleteMsg}</span></center> */}
                         {/* <Table data = {tableData} /> */}
 <center>
-                        <div className="mask" style={{ display: this.state.spinnerShowDisplay1 ? 'block' : 'none' }} width={300}  height={500}>
+                        <div className="mask" style={{ display: this.state.spinnerShowDisplay ? 'block' : 'none' }} width={300}  height={500}>
               <Spinner style={{"position":"relative", "top":"60%"}} width={300}
                   height={500}
                   spinnerColor={"#338b7a"}
                   spinnerWidth={5}
-                  show={this.state.spinnerShow1} />
+                  show={this.state.spinnerShow} />
            </div>
            </center>
                         <Table data = {this.props.MedianIncomeApi} remove={this.removeMedianIncome} Name={data} />
@@ -357,7 +358,6 @@ MedianIncome.propTypes = {
    
    
    function mapStateToProps(state, actions) {
-        console.log("Median Income",state)
         
         if(state.fetchMedianIncomeDelete.condition)
             {
