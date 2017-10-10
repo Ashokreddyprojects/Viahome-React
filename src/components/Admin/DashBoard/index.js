@@ -64,7 +64,7 @@ class DashBoard extends Component {
                                 <div className="row">
                                     <div className="col-md-4 col-xs-12 col-sm-4 headiconspl"><span>Projects List</span></div>
                                     <div className="col-md-4 col-xs-12 col-sm-4 headiconstp"><span>Total Projects: {this.props.DashBoardApiSize}</span></div>
-                                    <div className="col-md-4 col-xs-12 col-sm-4 headiconstu"><span>Total Users:{this.props.UsersAPICount}</span></div>
+                                    <div className="col-md-4 col-xs-12 col-sm-4 headiconstu"><span>Total Users: {this.props.UsersAPICount}</span></div>
                                 </div>
 
                             </header>

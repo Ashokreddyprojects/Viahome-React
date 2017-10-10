@@ -1924,7 +1924,7 @@ class VhModel extends Component {
                            
                               <div className="col-md-8">
                               <div className="table-responsive">
-							<table className="table table-hover table-striped vhmodeltable thirdchildalign">
+							<table className="table table-hover table-striped vhmodeltable lasttwochildalign">
 								<thead>
                                     <th>Construction Uses</th>
                                     <th className="text-right">$</th>

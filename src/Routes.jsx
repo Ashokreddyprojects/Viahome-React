@@ -33,6 +33,8 @@ import rediRectPage from './components/rediRectPage'
 import Header from './components/User/Header'
 import UserDashboard from './components/User/UserDashboard'
 import VhModel from './components/User/VhModel'
+import EditProject from './components/User/EditProject'
+
 
 
 
@@ -79,7 +81,10 @@ const Routes = () => (
             <Route path='/DashBoard' component={DashBoard} />
               <Route path='/UserDashboard' component={UserDashboard} />
               <Route path='/VhModel' component={VhModel} />
-             <Route path='/Header' component={Header} />
+              <Route path='/EditProject' component={EditProject} />
+
+
+             {/* <Route path='/Header' component={Header} /> */}
   
         </div>
         
