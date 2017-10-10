@@ -32,6 +32,7 @@ import rediRectPage from './components/rediRectPage'
 //user Part
 import Header from './components/User/Header'
 import UserDashboard from './components/User/UserDashboard'
+import VhModel from './components/User/VhModel'
 
 
 
@@ -77,6 +78,7 @@ const Routes = () => (
             {/* User Part */}
             <Route path='/DashBoard' component={DashBoard} />
               <Route path='/UserDashboard' component={UserDashboard} />
+              <Route path='/VhModel' component={VhModel} />
              <Route path='/Header' component={Header} />
   
         </div>

@@ -154,7 +154,7 @@ class login extends Component {
         {
 
             return   <Redirect to={{
-        pathname: '/DashBoard',
+        pathname: '/UserDashboard',
         state: { UserLoginData }
       }}/>
         }
