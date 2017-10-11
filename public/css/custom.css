@@ -1001,6 +1001,7 @@ label {font-weight:normal;color:#338b7a;margin-bottom:0px;}
 .vhmodeltable thead th{
     background-color: #338b7a;
     color: white !important;
+    padding: 0px 10px;
     
     
 }
@@ -1627,6 +1628,13 @@ height: 23px;
     margin-top: -61px;
     height: 40px;
     
+}
+.vnmodelcmpltbtn
+{
+
+    margin-top: -19px;
+    margin-right: 2px;
+    margin-bottom: 10px;
 }
 .panel {
    

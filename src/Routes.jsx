@@ -34,11 +34,17 @@ import Header from './components/User/Header'
 import UserDashboard from './components/User/UserDashboard'
 import VhModel from './components/User/VhModel'
 import EditProject from './components/User/EditProject'
+import TermSheet from './components/User/TermSheet'
+import vhModelEdit from './components/User/vhModelEdit'
+import createProject from './components/User/createProject'
+import viewCompletevhModel from './components/User/viewCompletevhModel'
 
 
 
 
-import DashBoard from './components/User/DashBoard'
+
+
+
 
 export const history = createHistory();
 //console.log('Router', history.location.pathname);
@@ -78,10 +84,18 @@ const Routes = () => (
             <Route path='/DashBoardProjectsEdit' component={DashBoardProjectsEdit} />  */}
 
             {/* User Part */}
-            <Route path='/DashBoard' component={DashBoard} />
+           
               <Route path='/UserDashboard' component={UserDashboard} />
               <Route path='/VhModel' component={VhModel} />
               <Route path='/EditProject' component={EditProject} />
+              <Route path='/TermSheet' component={TermSheet} />
+               <Route path='/vhModelEdit' component={vhModelEdit} />
+               <Route path='/createProject' component={createProject} />
+                <Route path='/viewCompletevhModel' component={viewCompletevhModel} />
+               
+              
+
+              
 
 
              {/* <Route path='/Header' component={Header} /> */}
