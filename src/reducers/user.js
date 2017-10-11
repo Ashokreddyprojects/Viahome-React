@@ -210,7 +210,7 @@ export function fetchChangePassword(state = INITIAL_STATE1, action) {
     }
 }
 
-// User Forgot Password
+// Forgot Password
 export function fetchForgotPasswordFailed(state = false, action) {
     switch (action.type) {
         case 'FORGOT_PASSWORD_FAILURE':
@@ -230,6 +230,34 @@ export function fetchForgotPasswordLoading(state = false, action) {
 export function fetchForgotPassword(state = INITIAL_STATE1, action) {
     switch (action.type) {
         case 'FORGOT_PASSWORD_SUCCESS':
+            {
+                
+                return action.items;}
+        default:
+            return state;
+    }
+}
+
+//Reset Password
+export function fetchResetPasswordFailed(state = false, action) {
+    switch (action.type) {
+        case 'RESET_PASSWORD_FAILURE':
+            return action.hasErrored;
+        default:
+            return state;
+    }
+}
+export function fetchResetPasswordLoading(state = false, action) {
+    switch (action.type) {
+        case 'RESET_PASSWORD_LOADING':
+            return action.isLoading;
+        default:
+            return state;
+    }
+}
+export function fetchResetPassword(state = INITIAL_STATE1, action) {
+    switch (action.type) {
+        case 'RESET_PASSWORD_SUCCESS':
             {
                 
                 return action.items;}

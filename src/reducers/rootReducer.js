@@ -45,6 +45,9 @@ import { fetchChangePasswordFailed, fetchChangePasswordLoading, fetchChangePassw
 //User Forgot Password
 import { fetchForgotPasswordFailed, fetchForgotPasswordLoading, fetchForgotPassword } from './user'
 
+//Reset Password
+import { fetchResetPasswordFailed, fetchResetPasswordLoading, fetchResetPassword } from './user'
+
 const rootReducer = combineReducers({
     fetchDashBoardDataLoading,
     fetchDashBoardFailure,
@@ -139,6 +142,11 @@ const rootReducer = combineReducers({
     fetchForgotPasswordFailed,
     fetchForgotPasswordLoading,
     fetchForgotPassword,
+    //Reset Password
+    fetchResetPasswordFailed,
+    fetchResetPasswordLoading,
+    fetchResetPassword,
+
 
 
     form: formReducer

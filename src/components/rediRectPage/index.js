@@ -25,6 +25,7 @@ class rediRectPage extends Component {
      }
     render() {
         
+        window.location.reload();
         let id = this.props.match.params.id;
         let UserId = this.props.match.params.userId;
        

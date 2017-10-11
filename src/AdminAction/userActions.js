@@ -505,3 +505,67 @@ export function ForgotPasswordFetchData(url, payload) {
     };
   
 }
+
+// User Reset Password
+
+export function fetchResetPasswordFailed(bool) {
+    return {
+        type: 'RESET_PASSWORD_FAILURE',
+        hasErrored: bool
+    };
+}
+export function fetchResetPasswordLoading(bool) {
+    return {
+        type: 'RESET_PASSWORD_LOADING',
+        isLoading: bool
+    };
+}
+export function fetchResetPasswordSuccess(items) {
+    return {
+        type: 'RESET_PASSWORD_SUCCESS',
+        items
+    };
+}
+
+export function ResetPasswordFetchData(url, payload) {
+
+  //  console.log(" User Log url",url)
+    
+
+        return (dispatch) => {
+       console.log('Resetpassword payload', payload);
+        dispatch(fetchResetPasswordLoading(true));
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify(payload),
+            credentials: "same-origin",
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((response) => {
+                if (!response.ok) {
+                   // console.log(response.statusText);
+                 //   console.log('User Login response 1', response);
+                    throw Error(response.statusText);
+                }
+                dispatch(fetchResetPasswordLoading(false));
+                return response;
+            })
+            .then(response => {
+               console.log('Resetpassword 2'+response);
+                return response.json();
+            })
+            .then((eventData) => {
+               console.log(' Resetpassword 1', eventData);
+                dispatch(fetchResetPasswordSuccess(eventData));
+            })
+            .catch((err) => {
+                console.log('Resetpassword error'+err);
+                dispatch(fetchResetPasswordFailed(true))
+            }
+            );
+    };
+  
+}
