@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 
 class Header extends Component {
   render() {
-    return (
+ 
+     const { Name } = this.props
+        return (
       <div>
     <section id="container" >
 {/* header start */}
@@ -32,13 +34,13 @@ class Header extends Component {
         <li className="dropdown">
             <a data-toggle="dropdown" className="dropdown-toggle" href="#">
                 <img alt="" src="images/default.png" />
-                <span className="username">User</span>
+                <span className="username">{Name.username}</span>
                 <b className="caret"></b>
             </a>
             <ul className="dropdown-menu extended logout">
                 <li><a href="user-profile.html"><i className=" fa fa-suitcase"></i>Profile</a></li>
               
-                <li><a href="index.html"><i className="fa fa-key"></i> Log Out</a></li>
+                <li><a href="/"><i className="fa fa-key"></i> Log Out</a></li>
             </ul>
         </li>
         {/*  user login dropdown end  */}

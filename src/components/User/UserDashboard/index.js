@@ -1,54 +1,82 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import UserHeader from '../Header';
+import Table from '../UserDashboardTable/Table';
+import { fetchDashBoardData } from '../../../AdminAction/actions';
+import { fetchUserData } from '../../../AdminAction/userActions';
+import * as AdminConstants from '../../Admin/AdminConstants';
 
 
 
 class UserDashboard extends Component {
-  render() {
-    var data=this.props.location.state;
-    console.log("User Login Data",data)
-    return (
-      <UserHeader>
-              <section id="main-content" className="hide-sidebar">
-        <section className="wrapper">
-		<div className="row dbalign">
-			<div className="col-md-6 col-sm-6 col-xs-12 aligndbbtn">
-                    <ul className="breadcrumbs-alt braeadcrumbs-dashboardresponsiveuser">
-                        <li>
-                            <a href="user-dashboard.html" className="current">Dashboard</a>
-                        </li>
-                        
-                    </ul>
-                
-                </div>
-            
-            
-            <div className="col-md-6 col-sm-6 col-xs-12">
-                
-                     <a className="default-btn pull-right cpbtn" href="createproject.html">Create Project</a>
-                     <div className="input-group pull-right col-md-6 col-sm-8 col-xs-9 searchbuttonadjustment">
-                                <input type="text" className="search-query form-control serachbtn" placeholder="Search" />
-                                <span className="input-group-btn">
-                                    <button className="btn btn-default serachbtnicon" type="button">
-                                        <span className=" glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
+    componentWillMount() {
+        var Url = AdminConstants.ApiCallUrl + 'findUsers';
+        var paramString1 = "list";
+
+        this.props.dispatch(fetchUserData(Url, paramString1));
+        var Url2 = AdminConstants.ApiCallUrl + 'findProjects';
+        var paramString = "list";
+
+        this.props.dispatch(fetchDashBoardData(Url2, paramString));
+
+    }
+    render() {
+        var data = this.props.location.state;
+
+        var UserDatails = this.props.location.state;
+        var Name;
+
+
+        if (UserDatails.UserLoginData == undefined) {
+            Name = data;
+        } else {
+            // console.log("User Login Details",UserDatails.UserLoginData.result)
+            Name = UserDatails.UserLoginData.result;
+
+        }
+        return (
+            <UserHeader Name={Name}>
+                <section id="main-content" className="hide-sidebar">
+                    <section className="wrapper">
+                        <div className="row dbalign">
+                            <div className="col-md-6 col-sm-6 col-xs-12 aligndbbtn">
+                                <ul className="breadcrumbs-alt braeadcrumbs-dashboardresponsiveuser">
+                                    <li>
+                                        <a href="user-dashboard.html" className="current">Dashboard</a>
+                                    </li>
+
+                                </ul>
+
                             </div>
-                     
-                </div>
-           
-            
-		</div>
-        {/* page start */}
-<section className="panel">
-                    <header className="panel-heading main-bg">
-                        <div className="row">
-                        <div className="col-md-6"><span className="pull-left">Projects List</span></div>
-                        <div className="col-md-6"><span className="pull-right">Total Users:100</span></div>
-                       </div>
-                    </header>
-                    <div className="panel-body table-responsive">
-                        <table className="table  table-hover table-striped general-table col-md-12 col-sm-12 col-xs-12">
+
+
+                            <div className="col-md-6 col-sm-6 col-xs-12">
+                                <Link className="default-btn pull-right cpbtn" to={{ pathname: '/createProject', state: {Name} }} >Create Project</Link>
+                                <div className="input-group pull-right col-md-6 col-sm-8 col-xs-9 searchbuttonadjustment">
+                                    <input type="text" className="search-query form-control serachbtn" placeholder="Search" />
+                                    <span className="input-group-btn">
+                                        <button className="btn btn-default serachbtnicon" type="button">
+                                            <span className=" glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        {/* page start */}
+                        <section className="panel">
+                            <header className="panel-heading main-bg">
+                                <div className="row">
+                                    <div className="col-md-6"><span className="pull-left">Projects List</span></div>
+                                    <div className="col-md-6"><span className="pull-right">Total Users:&nbsp;{this.props.DashBoardApiSize}</span></div>
+                                </div>
+                            </header>
+                            <div className="panel-body table-responsive">
+                                <Table data={this.props.DashBoardApi} />
+                                {/* <table className="table  table-hover table-striped general-table col-md-12 col-sm-12 col-xs-12">
                             <thead>
                             <tr>
 								<th>Project Name</th>
@@ -215,32 +243,36 @@ class UserDashboard extends Component {
                                 
                             </tr>
                             </tbody>
-                        </table>
-                    </div>
+                        </table> */}
+                            </div>
+                        </section>
+
+
+                    </section>
                 </section>
 
+            </UserHeader>
+        );
+    }
+}
+function mapStateToProps(state, actions) {
 
-            {/*-Pagenation start-- */}
-           
-            <ul className="pagination pull-right ">
-                     
-                   <li><a href="#">&laquo;</a></li>
-                    <li className="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                   <li><a href="#">&raquo;</a></li>
-               
-            </ul>
-          
-        {/* page end */}
-        </section>
-    </section>
-      
-      </UserHeader>
-    );
-  }
+
+
+
+    if (state.fetchDashBoardData && state.fetchDashBoardData.App && state.fetchDashBoardData.App.length > 0) {
+        // console.log("DashBoard", state.fetchDashBoardData)
+
+        //debugger;
+        return {
+            DashBoardApi: state.fetchDashBoardData.App,
+            DashBoardApiSize: state.fetchDashBoardData.App.length,
+            UsersAPICount: state.fetchUserData.App.length
+        }
+    } else {
+        return {};
+    }
+
 }
 
-export default UserDashboard;
+export default connect(mapStateToProps)(UserDashboard);
