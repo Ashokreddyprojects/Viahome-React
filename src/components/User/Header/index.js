@@ -34,7 +34,7 @@ class Header extends Component {
         <li className="dropdown">
             <a data-toggle="dropdown" className="dropdown-toggle" href="#">
                 <img alt="" src="images/default.png" />
-                <span className="username">{Name.username}</span>
+                <span className="username">{this.props.Name.username}</span>
                 <b className="caret"></b>
             </a>
             <ul className="dropdown-menu extended logout">

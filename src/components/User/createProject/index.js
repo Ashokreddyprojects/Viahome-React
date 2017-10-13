@@ -21,6 +21,7 @@ handleSubmit(event)
 	const project = event.target;
 	let Name=project.Name.value;
 	let Email=project.Email.value;
+	let Phone=project.Phone.value;
 	let Address=project.Address.value;
 	let City=project.City.value;
 	let State=project.State.value;
@@ -41,82 +42,98 @@ handleSubmit(event)
 
 					var condtionCheck=true;
 					var projectRequireError =[];
+					
 	
 					if(Name.length === 0){
 							condtionCheck=false;
-							projectRequireError[0]="Name is required"
+							projectRequireError[1]="Name is required"
 						}
 						if(Email.length === 0){
 							condtionCheck=false;
 							projectRequireError[2]="Email is required"
 						}
+
+						else
+							{
+
+								  if (!/^.+@.+\..+$/.test(Email)) {
+									  condtionCheck=false;
+									projectRequireError[2]=Email+ "is not a valid email.";
+									}
+
+
+							}
+							if((Phone.length === 0)||(Phone.trim().length === 0) ){
+							condtionCheck=false;
+							projectRequireError[3]="Phone is required"
+						}
 							if(Address.length === 0){
 							condtionCheck=false;
-							projectRequireError[3]="Address is required"
+							projectRequireError[4]="Address is required"
 						}
 							if(City.length === 0){
 							condtionCheck=false;
-							projectRequireError[4]="City is required"
+							projectRequireError[5]="City is required"
 						}
 							if(State.length === 0){
 							condtionCheck=false;
-							projectRequireError[5]="State is required"
+							projectRequireError[6]="State is required"
 						}
 							if(ZipCode.length === 0){
 							condtionCheck=false;
-							projectRequireError[6]="Zip Code is required"
+							projectRequireError[7]="Zip Code is required"
 						}
 							if(ProjectName.length === 0){
 							condtionCheck=false;
-							projectRequireError[7]="Project Name is required"
+							projectRequireError[8]="Project Name is required"
 						}
 							if(OrganizationName.length === 0){
 							condtionCheck=false;
-							projectRequireError[8]="Organization Name is required"
+							projectRequireError[9]="Organization Name is required"
 						}
 							if(PropertyAddress.length === 0){
 							condtionCheck=false;
-							projectRequireError[9]="Property Address is required"
+							projectRequireError[10]="Property Address is required"
 						}
 							if(MetroArea.length === 0){
 							condtionCheck=false;
-							projectRequireError[10]="Metro Area is required"
+							projectRequireError[11]="Metro Area is required"
 						}
 							if(ConstructionType.length === 0){
 							condtionCheck=false;
-							projectRequireError[11]="Construction Type is required"
+							projectRequireError[12]="Construction Type is required"
 						}
 							if(PurchasePrice.length === 0){
 							condtionCheck=false;
-							projectRequireError[12]="Purchase Price is required"
+							projectRequireError[13]="Purchase Price is required"
 						}
 							if(SquareFootage.length === 0){
 							condtionCheck=false;
-							projectRequireError[13]="Square Footage is required"
+							projectRequireError[14]="Square Footage is required"
 						}
 							if(RenovationLevel.length === 0){
 							condtionCheck=false;
-							projectRequireError[14]="Renovation Level is required"
+							projectRequireError[15]="Renovation Level is required"
 						}
 							if(Studios.length === 0){
 							condtionCheck=false;
-							projectRequireError[15]="Studios is required"
+							projectRequireError[16]="Studios is required"
 						}
 							if(One_BedRoom_11.length === 0){
 							condtionCheck=false;
-							projectRequireError[16]="One BedRoom 11 is required"
+							projectRequireError[17]="One BedRoom 11 is required"
 						}
 							if(Two_BedRoom_12.length === 0){
 							condtionCheck=false;
-							projectRequireError[17]="Two BedRoom 12 is required"
+							projectRequireError[18]="Two BedRoom 12 is required"
 						}
 							if(Three_BedRoom_13.length === 0){
 							condtionCheck=false;
-							projectRequireError[18]="Three BedRoom 13 is required"
+							projectRequireError[19]="Three BedRoom 13 is required"
 						}
 							if(Four_BedRoom_14.length === 0){
 							condtionCheck=false;
-							projectRequireError[19]="Four BedRoom 14 is required"
+							projectRequireError[20]="Four BedRoom 14 is required"
 						}
 
 
@@ -186,38 +203,44 @@ handleSubmit(event)
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="Name" type="text" name="Name"  />
-												 <span className = "ErrorsMsgDisplay">{this.state.errors[0]}</span>
+												 <span className = "ErrorsMsgDisplay">{this.state.projectRequireError[1]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
-												<input placeholder="E-mail" type="email" name="Email" />
+												<input placeholder="E-mail" type="text" name="Email" />
+												<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[2]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
-												<input placeholder="Phone" type="number" name="Phone" />
+												<input placeholder="Phone" type="text" name="Phone"  maxLength={10} />
+												<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[3]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="Address" type="text" name="Address"/>
+												<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[4]}</span>
 											</div>
 										</div>
                                         
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="City" type="text" name="City"/>
+												<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[5]}</span>
 											</div>
 										</div>
 										<div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="State" type="text" name="State" />
+												<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[6]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
-												<input placeholder="Zipcode" type="number"  name="ZipCode"/>
+												<input placeholder="Zipcode" type="text"  name="ZipCode"  maxLength={6} />
+												<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[7]}</span>
 											</div>
 										</div>
                                         </div>
@@ -230,48 +253,57 @@ handleSubmit(event)
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="Project Name" type="text"  name="ProjectName"/>
+												<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[8]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder=" Organization Name" type="text" name="OrganizationName" />
+												<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[9]}</span>
 											</div>
 										</div>
                                        
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="Property Address" type="text" name="PropertyAddress" />
+												<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[10]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="Metro Area" type="text" name="MetroArea" />
+												<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[11]}</span>
 											</div>
 										</div>
                                         
 										<div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="Is your project new construction or acquisition renovation" type="text"  name="ConstructionType"/>
+											<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[12]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder=" What is the site purchase price" type="number" name="PurchasePrice" />
+											<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[13]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder=" What is the building square footage" type="number" name="SquareFootage"/>
+													<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[14]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="Renovation Level" type="text" name="RenovationLevel" />
+													<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[15]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4">
 											<div className="reg-login-info">
 												<input placeholder="Studios" type="number" name="Studios" />
+													<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[16]}</span>
 											</div>
 										</div>
                                         </div>
@@ -285,21 +317,25 @@ handleSubmit(event)
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="1 Bed Rooms 11" type="number"  name="One_BedRoom_11" />
+													<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[17]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="2 Bed Rooms 12" type="number" name="Two_BedRoom_12" />
+													<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[18]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="3 Bed Rooms 13" type="number" name="Three_BedRoom_13" />
+													<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[19]}</span>
 											</div>
 										</div>
                                         <div className="col-md-4 col-sm-6 col-xs-12">
 											<div className="reg-login-info">
 												<input placeholder="4 Bed Rooms" type="number"  name="Four_BedRoom_14" />
+													<span className = "ErrorsMsgDisplay">{this.state.projectRequireError[20]}</span>
 											</div>
 										</div>
                                       

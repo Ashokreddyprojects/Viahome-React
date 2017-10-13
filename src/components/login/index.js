@@ -168,18 +168,18 @@ class login extends Component {
       <div className="form-signin" >
         <img src="images/main-logo.png" alt="Logo" className="img-responsive"/>
         <div className="login-wrap">
-         <form className="form-signin form-reg" onSubmit={this.handleSubmit}>
+         <form className="form-signin form-reg" onSubmit={this.handleSubmit} style={{"margin": "5px auto"}}>
             <div className="user-login-info"  id="reg-login">
 				<input placeholder="Username" name="username" id="user" type="text" autocomplete="false" className="inputplaceholder" />
                 <span className="ErrorsMsgDisplay">{this.state.userLoginErrors[0]}</span>
 				<input placeholder="Password" name="password" type="password" autocomplete="off" className="inputplaceholder" />
                 <span className="ErrorsMsgDisplay">{this.state.userLoginErrors[1]}</span>
 			</div>
-                <label className="active customlabel">
+                {/* <label className="active customlabel">
 				  <input type="checkbox" name='email1' /><i className="fa fa-square-o"></i><i className="fa fa-check-square-o"></i> <span> Remember Password</span>
-				</label>
+				</label> */}
              
-				<span className="pull-right">
+				<span className="pull-right"style={{"marginBottom":"6px"}}>
                     <a data-toggle="modal" href="#forgotpwd"> Forgot Password?</a>
                 </span>
             <button className="btn btn-lg btn-login btn-block" id="SignIn" type="submit"  >Sign in</button>
