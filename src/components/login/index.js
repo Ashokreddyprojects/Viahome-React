@@ -170,7 +170,7 @@ class login extends Component {
         <div className="login-wrap">
          <form className="form-signin form-reg" onSubmit={this.handleSubmit} style={{"margin": "5px auto"}}>
             <div className="user-login-info"  id="reg-login">
-				<input placeholder="Username" name="username" id="user" type="text" autocomplete="false" className="inputplaceholder" />
+				<input placeholder="Username" name="username" id="user" type="text" autocomplete="off" className="inputplaceholder" />
                 <span className="ErrorsMsgDisplay">{this.state.userLoginErrors[0]}</span>
 				<input placeholder="Password" name="password" type="password" autocomplete="off" className="inputplaceholder" />
                 <span className="ErrorsMsgDisplay">{this.state.userLoginErrors[1]}</span>

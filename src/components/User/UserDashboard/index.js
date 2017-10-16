@@ -10,6 +10,40 @@ import * as AdminConstants from '../../Admin/AdminConstants';
 
 
 class UserDashboard extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            searchList: "",
+            DashBoardApi: []
+        }
+        this.searchBtn = this.searchBtn.bind(this)
+        this.onChangeBox = this.onChangeBox.bind(this)
+        this.searchItemData = this.searchItemData.bind(this)
+
+
+    }
+    onChangeBox(evt) {
+        this.setState({ searchList: evt.target.value })
+
+
+
+    }
+    searchItemData = (query) => {
+        let ListOfProjetcs = this.props.DashBoardApi;
+        return ListOfProjetcs.filter((el) =>
+            el.ProjectName.toLowerCase().indexOf(query.toLowerCase()) > -1);
+    }
+
+    searchBtn() {
+
+        let tempEl = this.state.searchList;
+
+        this.setState({ DashBoardApi: this.searchItemData(tempEl) })
+
+    }
+
+
     componentWillMount() {
         var Url = AdminConstants.ApiCallUrl + 'findUsers';
         var paramString1 = "list";
@@ -21,6 +55,12 @@ class UserDashboard extends Component {
         this.props.dispatch(fetchDashBoardData(Url2, paramString));
 
     }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({ DashBoardApi: nextProps.DashBoardApi })
+
+
+    }
     render() {
         var data = this.props.location.state;
 
@@ -29,7 +69,7 @@ class UserDashboard extends Component {
 
 
         if (UserDatails.UserLoginData == undefined) {
-            Name = data;
+            Name = this.props.location.state.Name;
         } else {
             // console.log("User Login Details",UserDatails.UserLoginData.result)
             Name = UserDatails.UserLoginData.result;
@@ -43,7 +83,7 @@ class UserDashboard extends Component {
                             <div className="col-md-6 col-sm-6 col-xs-12 aligndbbtn">
                                 <ul className="breadcrumbs-alt braeadcrumbs-dashboardresponsiveuser">
                                     <li>
-                                        <a href="user-dashboard.html" className="current">Dashboard</a>
+                                        <Link to={{ pathname: '/UserDashboard', state: { Name } }} className="">Dashboard</Link>
                                     </li>
 
                                 </ul>
@@ -52,11 +92,11 @@ class UserDashboard extends Component {
 
 
                             <div className="col-md-6 col-sm-6 col-xs-12">
-                                <Link className="default-btn pull-right cpbtn" to={{ pathname: '/createProject', state: {Name} }} >Create Project</Link>
+                                <Link className="default-btn pull-right cpbtn" to={{ pathname: '/createProject', state: { Name } }} >Create Project</Link>
                                 <div className="input-group pull-right col-md-6 col-sm-8 col-xs-9 searchbuttonadjustment">
-                                    <input type="text" className="search-query form-control serachbtn" placeholder="Search" />
+                                    <input type="text" className="search-query form-control serachbtn" placeholder="Search" onChange={this.onChangeBox} />
                                     <span className="input-group-btn">
-                                        <button className="btn btn-default serachbtnicon" type="button">
+                                        <button className="btn btn-default serachbtnicon" type="button" onClick={this.searchBtn}>
                                             <span className=" glyphicon glyphicon-search"></span>
                                         </button>
                                     </span>
@@ -75,7 +115,7 @@ class UserDashboard extends Component {
                                 </div>
                             </header>
                             <div className="panel-body table-responsive">
-                                <Table data={this.props.DashBoardApi} />
+                                <Table data={this.state.DashBoardApi} />
                                 {/* <table className="table  table-hover table-striped general-table col-md-12 col-sm-12 col-xs-12">
                             <thead>
                             <tr>

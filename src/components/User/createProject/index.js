@@ -135,6 +135,10 @@ handleSubmit(event)
 							condtionCheck=false;
 							projectRequireError[20]="Four BedRoom 14 is required"
 						}
+						if(condtionCheck)
+							{
+								
+							}
 
 
 						this.setState({projectRequireError})
