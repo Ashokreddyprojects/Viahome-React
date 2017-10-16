@@ -3,7 +3,6 @@ import HeadBar from '../Header';
 import  { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-
 import { medianIncomeAddFetchData } from '../../../AdminAction/medianIncomeActions';
 import * as AdminConstants from '../AdminConstants';
 import { Button, Modal } from 'react-bootstrap';
@@ -157,7 +156,7 @@ class MedianIncomeAdd extends Component {
                 People_8: People_8
 
             }
-              console.log("Median Income Add ", AddDataMedianIncome)
+             // console.log("Median Income Add ", AddDataMedianIncome)
            let Url = AdminConstants.ApiCallUrl + 'addMedianIncome'
 
             this.props.dispatch(medianIncomeAddFetchData(Url, AddDataMedianIncome));

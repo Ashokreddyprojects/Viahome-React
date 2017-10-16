@@ -38,6 +38,8 @@ import TermSheet from './components/User/TermSheet'
 import vhModelEdit from './components/User/vhModelEdit'
 import createProject from './components/User/createProject'
 import viewCompletevhModel from './components/User/viewCompletevhModel'
+import UserProfile from './components/User/UserProfile'
+import underConstructionPage from './components/User/underConstructionPage'
 
 
 
@@ -55,53 +57,58 @@ const Routes = () => (
         <div>
             <Route exact path='/' component={login} />
             <Route path='/Register' component={register} />
-             <Route path='/forgetPassword' component={forgetPassword} />
-             <Route path='/rediRectPage/:id/:userId' component={rediRectPage} />
-             
+            <Route path='/forgetPassword' component={forgetPassword} />
+            <Route path='/rediRectPage/:id/:userId' component={rediRectPage} />
+
 
 
             <Route path='/AdminDashBoard' component={DashBoardContent} />
             <Route path='/DashBoardAdminProfile' component={DashBoardAdminProfile} />
-            
+
             <Route path='/DashBoardMedianIncome' component={DashBoardMedianIncome} />
-             {/* <Route path='/DashBoardMedianIncomeEdit/:MedianIncomeId' component={DashBoardMedianIncomeEdit} /> */}
+            {/* <Route path='/DashBoardMedianIncomeEdit/:MedianIncomeId' component={DashBoardMedianIncomeEdit} /> */}
             <Route path='/DashBoardMedianIncomeEdit' component={DashBoardMedianIncomeEdit} />
             <Route path='/DashBoardMedianIncomeAdd' component={DashBoardMedianIncomeAdd} />
-            
+
             <Route path='/DashBoardMTSPRents' component={DashBoardMTSPRents} />
             <Route path='/DashBoardMTSPRentsEdit' component={DashBoardMTSPRentsEdit} />
             <Route path='/DashBoardMTSPRentsAdd' component={DashBoardMTSPRentsAdd} />
-            
+
             <Route path='/DashBoardRCAssumptions' component={DashBoardRCAssumptions} />
             <Route path='/DashBoardRCAssumptionsEdit' component={DashBoardRCAssumptionsEdit} />
             <Route path='/DashBoardRCAssumptionsAdd' component={DashBoardRCAssumptionsAdd} />
-            
-        
+
+
             <Route path='/DashBoardUserManage' component={DashBoardUserManage} />
-            
-            
+
+
             {/* <Route path='/DashBoardProjects' component={DashBoardProjects} />
             <Route path='/DashBoardProjectsEdit' component={DashBoardProjectsEdit} />  */}
 
             {/* User Part */}
-           
-              <Route path='/UserDashboard' component={UserDashboard} />
-              <Route path='/VhModel' component={VhModel} />
-              <Route path='/EditProject' component={EditProject} />
-              <Route path='/TermSheet' component={TermSheet} />
-               <Route path='/vhModelEdit' component={vhModelEdit} />
-               <Route path='/createProject' component={createProject} />
-                <Route path='/viewCompletevhModel' component={viewCompletevhModel} />
-               
-              
 
-              
+            <Route path='/UserDashboard' component={UserDashboard} />
+            <Route path='/VhModel' component={VhModel} />
+            <Route path='/EditProject' component={EditProject} />
+            <Route path='/TermSheet' component={TermSheet} />
+            <Route path='/vhModelEdit' component={vhModelEdit} />
+            <Route path='/createProject' component={createProject} />
+            <Route path='/viewCompletevhModel' component={viewCompletevhModel} />
+            <Route path='/UserProfile' component={UserProfile} />
 
 
-             {/* <Route path='/Header' component={Header} /> */}
-  
+            <Route path='/underConstructionPage' component={underConstructionPage} />
+
+
+
+
+
+
+
+            {/* <Route path='/Header' component={Header} /> */}
+
         </div>
-        
+
     </Router>
 );
 export default Routes;

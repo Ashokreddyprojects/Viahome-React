@@ -17,7 +17,7 @@ class Table extends Component{
     {
            
 
-           const { data }= this.props;
+           const { data,remove,  Name }= this.props;
         //  console.log("Table Row ----",this.props.data);
           if (!this.props.data) return null
         return(
@@ -41,7 +41,7 @@ class Table extends Component{
                     {/* <TableRow data = {data} />  */}
 
                     
-                      {data.map((person, i) => <TableRow key = {i} data = {person} />)} 
+                      {data.map((person, i) => <TableRow key = {i} data = {person} remove1={remove.bind(this)}  Name={Name}/>)} 
                </tbody>
             </table>
         </div>    

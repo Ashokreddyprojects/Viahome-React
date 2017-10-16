@@ -119,7 +119,7 @@ class Header extends Component {
                 </li> */}
 
             </ul>            
-        <a href="http://betabulls.com/"><img src="images/betabulls.png" alt="" className="img-responsive" /></a>
+        {/* <a href="http://betabulls.com/"><img src="images/betabulls.png" alt="" className="img-responsive" /></a> */}
         </div>
         
         {/* sidebar menu end*/}

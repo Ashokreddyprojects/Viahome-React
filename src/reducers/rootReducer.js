@@ -48,6 +48,17 @@ import { fetchForgotPasswordFailed, fetchForgotPasswordLoading, fetchForgotPassw
 //Reset Password
 import { fetchResetPasswordFailed, fetchResetPasswordLoading, fetchResetPassword } from './user'
 
+//project Adding
+
+import { fetchProjectAddFailed, fetchProjectAddLoading, fetchProjectAddSuccess } from './project'
+
+//Update Project
+import {fetchProjectUpdateFailed, fetchProjectUpdateLoading, fetchProjectUpdate } from './project'
+
+//Delete Project
+import {fetchProjectDeleteFailed, fetchProjectDeleteLoading, fetchProjectDelete } from './project'
+
+
 const rootReducer = combineReducers({
     fetchDashBoardDataLoading,
     fetchDashBoardFailure,
@@ -146,6 +157,19 @@ const rootReducer = combineReducers({
     fetchResetPasswordFailed,
     fetchResetPasswordLoading,
     fetchResetPassword,
+
+    fetchProjectAddFailed,
+    fetchProjectAddLoading,
+    fetchProjectAddSuccess,
+      //Update Project
+    fetchProjectUpdateFailed,
+    fetchProjectUpdateLoading,
+    fetchProjectUpdate,
+
+      //Delete Project
+    fetchProjectDeleteFailed,
+    fetchProjectDeleteLoading,
+    fetchProjectDelete,
 
 
 

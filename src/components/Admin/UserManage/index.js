@@ -79,6 +79,7 @@ class UserManage extends Component {
                  this.setState({ activeAccountShow:true})
 
                  this.setState({activeobj:activeData})
+                 
                     //console.log("User Account", activeData)
 
 

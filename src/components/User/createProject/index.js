@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import UserHeader from '../Header';
+import { ProjectAddFetchData } from '../../../AdminAction/projectActions';
+import * as AdminConstants from '../../Admin/AdminConstants';
+import { Button, Modal } from 'react-bootstrap';
 
 class createProject extends Component {
 
@@ -9,10 +13,16 @@ class createProject extends Component {
 		super(props);
 		this.state={
 
-			 projectRequireError:[]
+			 projectRequireError:[],
+			  addProjectShow:false
 		}
 
 	this.handleSubmit=this.handleSubmit.bind(this);
+	}
+
+	addClose()
+	{
+		this.setState({addProjectShow:false})
 	}
 
 handleSubmit(event)
@@ -137,11 +147,42 @@ handleSubmit(event)
 						}
 						if(condtionCheck)
 							{
+								let CreateProjectdata={
+									Name:Name,
+									Phone:Phone,
+									Address:Address,
+									City:City,
+									State:State,
+									ZipCode:ZipCode,
+									ProjectName:ProjectName,
+									OrganizationName:OrganizationName,
+									PropertyAddress:PropertyAddress,
+									MetroArea:MetroArea,
+									ConstructionType:ConstructionType,
+									PurchasePrice:PurchasePrice,
+									SquareFootage:SquareFootage,
+									RenovationLevel:RenovationLevel,
+									Studios:Studios,
+									One_BedRoom_11:One_BedRoom_11,
+									Two_BedRoom_12:Two_BedRoom_12,
+									Three_BedRoom_13:Three_BedRoom_13,
+									Four_BedRoom_14:Four_BedRoom_14
+								}
+								console.log(CreateProjectdata)
+
+						let Url = AdminConstants.ApiCallUrl + 'createProject'
+						 this.props.dispatch(ProjectAddFetchData(Url, CreateProjectdata));
+						 this.setState({addProjectShow:true})
 								
 							}
+					else
+						{
+console.log("Hello")
 
+						}
+this.setState({projectRequireError})
 
-						this.setState({projectRequireError})
+						
 
 
 }
@@ -151,6 +192,7 @@ handleSubmit(event)
 				
 
         return (
+			<div>
             <UserHeader Name={Name}>
                 <section id="container" >
 
@@ -368,8 +410,71 @@ handleSubmit(event)
 
 </section>
             </UserHeader>
+
+
+         {/* Modal */}
+
+
+                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabIndex="-1" id="successmsg" className="modal fade">
+                        <div className="modal-dialog modal-md">
+                            <div className="modal-content">
+                                {/* <Modal show={this.state.showModal} onHide={this.updateClose} > */}
+                                <Modal show={this.state.addProjectShow}  >
+
+                                    {/* <Modal.Header closeButton> */}
+                                    <Modal.Header >
+                                        <Modal.Title>Project</Modal.Title>
+                                    </Modal.Header>
+
+
+                                    <Modal.Body>
+                                        <div className="row">
+                                            <div className="col-md-12 center-block text-center">
+                                                <i className={this.props.icon}></i>
+
+                                                <h4 className="text-center">{this.props.projectAddMsg}</h4>
+
+                                            </div>
+                                        </div>
+                                    </Modal.Body>
+
+
+                                    <Modal.Footer className="modal-footer text-center center-block">
+                                        <Button className="default-btn btnCenterPlace center-block" onClick={this.addClose.bind(this)}>Ok</Button>
+                                    </Modal.Footer>
+                                </Modal>
+                            </div>
+                        </div>
+                    </div> */}
+                    {/* modal */}
+			</div>
         );
     }
 }
 
-export default createProject;
+
+
+function mapStateToProps(state, actions) {
+	console.log("state.fetchProjectAddSuccess.msg",state.fetchProjectAddSuccess.msg)
+
+    if(state.fetchProjectAddSuccess && state.fetchProjectAddSuccess.msg)
+        {
+		  return {projectAddMsg:state.fetchProjectAddSuccess.msg,
+					icon:state.fetchProjectAddSuccess.icon}
+
+        }
+        else
+            {
+
+                return{}
+
+            }
+
+
+
+
+
+}
+
+
+export default connect (mapStateToProps) (createProject);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import  { Link } from 'react-router-dom';
 
 
 class Header extends Component {
@@ -38,9 +39,9 @@ class Header extends Component {
                 <b className="caret"></b>
             </a>
             <ul className="dropdown-menu extended logout">
-                <li><a href="user-profile.html"><i className=" fa fa-suitcase"></i>Profile</a></li>
+                <li><Link to="/underConstructionPage" ><i className=" fa fa-suitcase"></i>Profile</Link></li>
               
-                <li><a href="/"><i className="fa fa-key"></i> Log Out</a></li>
+                <li><Link to="/"><i className="fa fa-key"></i> Log Out</Link></li>
             </ul>
         </li>
         {/*  user login dropdown end  */}
