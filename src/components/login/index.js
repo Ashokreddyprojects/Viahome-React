@@ -263,7 +263,7 @@ class login extends Component {
                                 </Modal>
                             </div>
                         </div>
-                    </div> */}
+                    </div> 
                     {/* modal */}
 
          

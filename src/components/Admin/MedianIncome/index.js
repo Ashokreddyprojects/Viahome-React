@@ -6,7 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import Table from '../MedianIncomeTable/Table';
 import { fetchMedianIncomeData, medianIncomeDeleteFetchData } from '../../../AdminAction/medianIncomeActions';
 import * as AdminConstants from '../AdminConstants';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Pagination } from 'react-bootstrap';
 import Spinner from 'react-spinner-material';
 
 
@@ -34,13 +34,27 @@ class MedianIncome extends Component {
          urlRemove:"",
          removeobj:{},
         spinnerShow1: true,
-        spinnerShowDisplay1: true
+        spinnerShowDisplay1: true,
+        activePage:1
        
     }
-
+    this.handleSelect = this.handleSelect.bind(this);
       this.removeMedianIncome = this.removeMedianIncome.bind(this);
        this.autoFreashData = this.autoFreashData.bind(this);
    };
+
+
+
+
+      handleSelect(eventKey) {
+        //  console.log("eventKey",eventKey)
+        this.autoFreashData(eventKey)
+    this.setState({
+      activePage: eventKey
+    });
+    
+  }
+
     close()
     {
 
@@ -84,12 +98,12 @@ this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state
 
     }
 
-    autoFreashData()
+    autoFreashData(num)
     {
         this.setState({removeMsg:this.props.fetchMedianIncomeDeleteMsg})
       // console.log("sucess",this.state.removeMsg)
          
-          var Url2= AdminConstants.ApiCallUrl+'medianIncome';
+          var Url2= AdminConstants.ApiCallUrl+'medianIncome/'+num;
     var paramString="list";
 
     this.props.dispatch(fetchMedianIncomeData(Url2, paramString));
@@ -105,9 +119,9 @@ this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state
    
     componentWillMount()
     {
+  let num=1;
   
-  
- this.autoFreashData()
+ this.autoFreashData(num)
 
     }
        componentWillReceiveProps(nextProps) {
@@ -298,7 +312,17 @@ this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state
     </section>
     {/* main content end*/}
       
-    
+        <Pagination className="pull-right"  style={{"marginRight":"18px"}}
+        prev
+        next
+        first
+        last
+        ellipsis
+        boundaryLinks
+        items={this.props.PaginationCount}
+        maxButtons={5}
+        activePage={this.state.activePage}
+        onSelect={this.handleSelect} />
         </HeadBar>
 
            {/*  Modal  */}
@@ -357,7 +381,7 @@ MedianIncome.propTypes = {
    
    
    function mapStateToProps(state, actions) {
-        console.log("Median Income",state)
+       
         
         if(state.fetchMedianIncomeDelete.condition)
             {
@@ -371,10 +395,12 @@ MedianIncome.propTypes = {
    
            if (state.fetchMedianIncomeData  && state.fetchMedianIncomeData.App && state.fetchMedianIncomeData.App.length > 0) {
 
-                console.log("MedianIncome Update",state.fetchMedianIncomeData)
+                 console.log("MedianIncome ndDoc",state.fetchMedianIncomeData.count)
+                  let totalPages = Math.ceil(state.fetchMedianIncomeData.count / 100);
                  //debugger;
            return {MedianIncomeApi: state.fetchMedianIncomeData.App,
-            fetchMedianIncomeDeleteMsg:state.fetchMedianIncomeDelete.msg
+            fetchMedianIncomeDeleteMsg:state.fetchMedianIncomeDelete.msg,
+            PaginationCount:totalPages
          }
        } else {
            return {};
