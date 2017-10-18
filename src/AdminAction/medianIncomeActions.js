@@ -40,7 +40,7 @@ export function fetchMedianIncomeData(url, params) {
 
             })
             .then((response) => {
-                console.log("api data", response)
+               // console.log("api data", response)
 
                 dispatch(fetchMedianIncomeSuccess(response));
             }).catch(() => {
@@ -154,7 +154,7 @@ export function medianIncomeDeleteFetchData(url, payload) {
         })
             .then((response) => {
                 if (!response.ok) {
-                    console.log(response.statusText);
+                  //  console.log(response.statusText);
                  //   console.log('MedianIncome Delete 1', response);
                     throw Error(response.statusText);
                 }

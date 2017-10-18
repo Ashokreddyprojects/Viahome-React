@@ -1,223 +1,219 @@
 import React, { Component } from 'react';
 import HeadBar from '../Header';
-import  { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import Table from '../RCAssumptionsTable/Table';
-import { fetchRcAssumptionsData , fetchRCAssumptionDeleteFetchData} from '../../../AdminAction/RcAssumptions';
- import * as AdminConstants from '../AdminConstants';
- import { Button, Modal } from 'react-bootstrap';
- import Spinner from 'react-spinner-material';
+import { fetchRcAssumptionsData, fetchRCAssumptionDeleteFetchData } from '../../../AdminAction/RcAssumptions';
+import * as AdminConstants from '../AdminConstants';
+import { Button, Modal } from 'react-bootstrap';
 
 
-var AdminData={
-    	"FirstName"	: "Ashok Reddy",
-    	"LastName"	: "Penamalli",
-	"email"		:"ashok@betabulls",
-	"username"	: "BetaBulls",
-	"password"	:"1234",
-	"city"		: "Hyd",
-	"address"	: "Nlr",
-	"phone"		: "9988776655",
-	"agree"		: false
+
+var AdminData = {
+    "FirstName": "Ashok Reddy",
+    "LastName": "Penamalli",
+    "email": "ashok@betabulls",
+    "username": "BetaBulls",
+    "password": "1234",
+    "city": "Hyd",
+    "address": "Nlr",
+    "phone": "9988776655",
+    "agree": false
 }
 
-var DEMOLITION={
+var DEMOLITION = {
 
-			"Header":"Demolition",
-			"HeaderComponent":"Repair Level",
-			"HeaderPrice":"$ / sq ft",
-			"HeaderAction":"Actions"
-		}
-		
+    "Header": "Demolition",
+    "HeaderComponent": "Repair Level",
+    "HeaderPrice": "$ / sq ft",
+    "HeaderAction": "Actions"
+}
+
 var ROOF = {
-			"Header":"Roof",
-			"HeaderComponent":"Repair Level",
-			"HeaderPrice":"$ / sq ft",
-			"HeaderAction":"Actions"
+    "Header": "Roof",
+    "HeaderComponent": "Repair Level",
+    "HeaderPrice": "$ / sq ft",
+    "HeaderAction": "Actions"
 }
 
 var HEATING = {
-			"Header":"Heating",
-			"HeaderComponent":"Repair Level",
-			"HeaderPrice":"$ / sq ft",
-			"HeaderAction":"Actions"
+    "Header": "Heating",
+    "HeaderComponent": "Repair Level",
+    "HeaderPrice": "$ / sq ft",
+    "HeaderAction": "Actions"
 }
 
 var HOT_WATER = {
-			"Header":"Hot Water",
-			"HeaderComponent":"Repair Level",
-			"HeaderPrice":"$ / sq ft",
-			"HeaderAction":"Actions"
+    "Header": "Hot Water",
+    "HeaderComponent": "Repair Level",
+    "HeaderPrice": "$ / sq ft",
+    "HeaderAction": "Actions"
 }
 
 var INTERIOR = {
-			"Header":"Interior",
-			"HeaderComponent":"Repair Level",
-			"HeaderPrice":"$ / sq ft",
-			"HeaderAction":"Actions"
+    "Header": "Interior",
+    "HeaderComponent": "Repair Level",
+    "HeaderPrice": "$ / sq ft",
+    "HeaderAction": "Actions"
 }
 
 var OVERALL_BALLPARK = {
-			"Header":"Overall Ballpark",
-			"HeaderComponent":"Repair Level",
-			"HeaderPrice":"$ / sq ft",
-			"HeaderAction":"Actions"
+    "Header": "Overall Ballpark",
+    "HeaderComponent": "Repair Level",
+    "HeaderPrice": "$ / sq ft",
+    "HeaderAction": "Actions"
 }
 
 var WINDOW_ESTIMATE = {
-			"Header":"Window Estimate",
-			"HeaderComponent":"Repair Level",
-			"HeaderPrice":"e.a($)",
-			"HeaderAction":"Actions"
+    "Header": "Window Estimate",
+    "HeaderComponent": "Repair Level",
+    "HeaderPrice": "e.a($)",
+    "HeaderAction": "Actions"
 }
 
 var ELECTRIC = {
-			"Header":"Electric",
-			"HeaderComponent":"Repair Level",
-			"HeaderPrice":"$ per unit",
-			"HeaderAction":"Actions"
+    "Header": "Electric",
+    "HeaderComponent": "Repair Level",
+    "HeaderPrice": "$ per unit",
+    "HeaderAction": "Actions"
 }
 
 var CON_INTEREST = {
-			"Header":"Con. Interest",
-			"HeaderComponent":"Reserve Level (%)",
-			"HeaderPrice":"$ per unit",
-			"HeaderAction":"Actions"
+    "Header": "Con. Interest",
+    "HeaderComponent": "Reserve Level (%)",
+    "HeaderPrice": "$ per unit",
+    "HeaderAction": "Actions"
 }
 
 
 var ENTRYWAY = {
-			"Header":"Entryway",
-			"HeaderComponent":"Repair Level (%)",
-			"HeaderPrice":"$/ sq ft",
-			"HeaderAction":"Actions"
+    "Header": "Entryway",
+    "HeaderComponent": "Repair Level (%)",
+    "HeaderPrice": "$/ sq ft",
+    "HeaderAction": "Actions"
 }
 
 var PLUMBING = {
-			"Header":"Plumbing",
-			"HeaderComponent":"Repair Level",
-			"HeaderPrice":"$ per unit",
-			"HeaderAction":"Actions"
+    "Header": "Plumbing",
+    "HeaderComponent": "Repair Level",
+    "HeaderPrice": "$ per unit",
+    "HeaderAction": "Actions"
 }
 
 
 
 class RCAssumptions extends Component {
 
-    	constructor(props) {
+    constructor(props) {
 
-		super(props);
-		this.state = {
+        super(props);
+        this.state = {
 
-            removemsg:"",
-            showModal:false,
-			deleteRCAssumptions:"",
-			urlRemove:"",
-            removeobj:{},
-              spinnerShow: true,
-        spinnerShowDisplay: true
-		}
+            removemsg: "",
+            showModal: false,
+            deleteRCAssumptions: "",
+            urlRemove: "",
+            removeobj: {},
 
-		this.removeRCA = this.removeRCA.bind(this);
-		this.autofreshData = this.autofreshData.bind(this);
+        }
+
+        this.removeRCA = this.removeRCA.bind(this);
+        this.autofreshData = this.autofreshData.bind(this);
     }
 
     close() {
-        
-                this.setState({showModal : false})
+
+        this.setState({ showModal: false })
     }
 
     removeRCA(removeData) {
 
-        this.setState({showModal : true})
-       // console.log("removeData", removeData)
+        this.setState({ showModal: true })
+        // console.log("removeData", removeData)
 
-        	var Url = AdminConstants.ApiCallUrl+'deleteRCAData';
+        var Url = AdminConstants.ApiCallUrl + 'deleteRCAData';
 
         let id = {
             "id": removeData._id,
-            "type" : removeData.type
+            "type": removeData.type
 
         }
-        this.setState({deleteRCAssumptions: removeData.Repair_Level})
-        this.setState({urlRemove : Url})
-        this.setState({removeobj : id})
+        this.setState({ deleteRCAssumptions: removeData.Repair_Level })
+        this.setState({ urlRemove: Url })
+        this.setState({ removeobj: id })
 
-      //  this.props.dispatch(fetchRCAssumptionDeleteFetchData(Url, id));
+        //  this.props.dispatch(fetchRCAssumptionDeleteFetchData(Url, id));
 
-      //  this.autofreshData()
+        //  this.autofreshData()
     }
 
-    removeRCAssumptionsData()
-    {
-		 console.log("removeData")
-		 console.log(this.state.removeobj)
+    removeRCAssumptionsData() {
+        console.log("removeData")
+        console.log(this.state.removeobj)
 
         this.props.dispatch(fetchRCAssumptionDeleteFetchData(this.state.urlRemove, this.state.removeobj))
         this.autofreshData()
-        this.setState({showModal:false})
+        this.setState({ showModal: false })
 
     }
 
 
 
-    	autofreshData() {  
+    autofreshData() {
 
-		this.setState({removeMsg:this.props.fetchFMRRentsDeleteMsg})
-	  var Url2=AdminConstants.ApiCallUrl+'rcAssumption';
-    var paramString="list";
+        this.setState({ removeMsg: this.props.fetchFMRRentsDeleteMsg })
+        var Url2 = AdminConstants.ApiCallUrl + 'rcAssumption';
+        var paramString = "list";
 
-    this.props.dispatch(fetchRcAssumptionsData(Url2, paramString));
-	}
-componentWillMount()
-   {
-    
-  	this.autofreshData()
+        this.props.dispatch(fetchRcAssumptionsData(Url2, paramString));
+    }
+    componentWillMount() {
+
+        this.autofreshData()
 
     }
     componentWillReceiveProps(nextProps) {
-          // console.log("Hello World")
-      this.setState({spinnerShow: false})
-      this.setState({spinnerShowDisplay: false})
+        // console.log("Hello World")
+
 
     }
 
 
-  render() {
-      var data=this.props.location.state;
-      
-    return (
-      <div>
-        <HeadBar Name={data} >
-        
-            {/* main content start */}
-    <section id="main-content">
-        <section className="wrapper">
-		
-			<div className="col-md-6 col-sm-12 col-xs-12 no-padding-left">
-                    <ul className="breadcrumbs-alt">
-                        <li>
-                            <Link to={{ pathname: '/AdminDashBoard', state: data}} className="">Dashboard</Link>
-                        </li>
-                         <li>
-                            <Link className="current" to="DashBoardRCAssumptions">RC Assumptions</Link>
-                        </li>
-                      {/*    <li>
+    render() {
+        var data = this.props.location.state;
+
+        return (
+            <div>
+                <HeadBar Name={data} >
+
+                    {/* main content start */}
+                    <section id="main-content">
+                        <section className="wrapper">
+
+                            <div className="col-md-6 col-sm-12 col-xs-12 no-padding-left">
+                                <ul className="breadcrumbs-alt">
+                                    <li>
+                                        <Link to={{ pathname: '/AdminDashBoard', state: data }} className="">Dashboard</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="current" to="DashBoardRCAssumptions">RC Assumptions</Link>
+                                    </li>
+                                    {/*    <li>
                             <a className="current" href="#">Request Project</a>
                         </li>   */}
-                    </ul>
-					
-					{/*  <div id="sb-search" className="sb-search">
+                                </ul>
+
+                                {/*  <div id="sb-search" className="sb-search">
 						<form>
 							<input className="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
 							<input className="sb-search-submit" type="submit" value="">
 							<span className="sb-icon-search"></span>
 						</form>
 					</div>  */}
-                </div>
-				<div className="col-md-6 col-sm-12 col-xs-12 brfileadjust no-padding-right">
-					{/*<div className="form-group col-md-10 col-sm-8 col-xs-12">
+                            </div>
+                            <div className="col-md-6 col-sm-12 col-xs-12 brfileadjust no-padding-right">
+                                {/*<div className="form-group col-md-10 col-sm-8 col-xs-12">
 						<input type="file" name="img[]" className="file" />
 						<div className="input-group pull-right">
 						  <span className="input-group-addon"><i className="fa fa-file"></i></span>
@@ -227,43 +223,35 @@ componentWillMount()
 						  </span>
 						</div>
 					</div>*/}
-					<div className="col-md-12 col-sm-12 col-xs-12">
-						<Link className="default-btn pull-right addbtn" to={{ pathname: '/DashBoardRCAssumptionsAdd', state: data}}>Add</Link>
-					</div>
-					
-				</div>
-		<div className="clearfix"></div>
-        {/*  page start */}
+                                <div className="col-md-12 col-sm-12 col-xs-12">
+                                    <Link className="default-btn pull-right addbtn" to={{ pathname: '/DashBoardRCAssumptionsAdd', state: data }}>Add</Link>
+                                </div>
 
-        {/* <center><span className="dataRemoveSucessMsg">{this.props.fetchRCAssumptionDeleteMsg}</span></center> */}
-            
-              <div className="row renovationcosttable">
-    <div className="col-md-6 col-sm-12 col-xs-12" >
-        	<section className="panel">
-                    <header className="panel-heading main-bg">
-                        Demolition
+                            </div>
+                            <div className="clearfix"></div>
+                            {/*  page start */}
+
+                            {/* <center><span className="dataRemoveSucessMsg">{this.props.fetchRCAssumptionDeleteMsg}</span></center> */}
+
+                            <div className="row renovationcosttable">
+                                <div className="col-md-6 col-sm-12 col-xs-12" >
+                                    <section className="panel">
+                                        <header className="panel-heading main-bg">
+                                            Demolition
                     </header>
-                    <div className="panel-body table-responsive">
-                        <center>
-                        <div className="mask" style={{ display: this.state.spinnerShowDisplay ? 'block' : 'none' }} width={300}  height={500}>
-              <Spinner style={{"position":"relative", "top":"60%"}} width={300}
-                  height={500}
-                  spinnerColor={"#338b7a"}
-                  spinnerWidth={5}
-                  show={this.state.spinnerShow} />
-           </div>
-           </center>
+                                        <div className="panel-body table-responsive">
 
-                        <Table header={DEMOLITION}
-                        data={this.props.RCAssumptionsApi}
-                        remove={this.removeRCA}
-                        Name={data}
-                        />
 
-                    {/* 
+                                            <Table header={DEMOLITION}
+                                                data={this.props.RCAssumptionsApi}
+                                                remove={this.removeRCA}
+                                                Name={data}
+                                            />
+
+                                            {/* 
 
                         DEMOLITION */}
-                        {/* <table className="table  table-hover general-table">
+                                            {/* <table className="table  table-hover general-table">
                             <thead>
                             <tr>
 								<th>Demolition</th>
@@ -318,22 +306,22 @@ componentWillMount()
                             </tr>
                             </tbody>
                         </table> */}
-                    </div>
-                </section>
-     
-    </div>
-    <div className="col-md-6 col-sm-12 col-xs-12" >
-        	<section className="panel">
-                    <header className="panel-heading main-bg">
-                        Roof
+                                        </div>
+                                    </section>
+
+                                </div>
+                                <div className="col-md-6 col-sm-12 col-xs-12" >
+                                    <section className="panel">
+                                        <header className="panel-heading main-bg">
+                                            Roof
                     </header>
-                    <div className="panel-body table-responsive">
-                          <Table header={ROOF}
-                       data={this.props.RCAssumptionsApi}
-                         remove={this.removeRCA}
-                         Name={data}
-                        />
-                        {/* <table className="table  table-hover general-table">
+                                        <div className="panel-body table-responsive">
+                                            <Table header={ROOF}
+                                                data={this.props.RCAssumptionsApi}
+                                                remove={this.removeRCA}
+                                                Name={data}
+                                            />
+                                            {/* <table className="table  table-hover general-table">
                             <thead>
                             <tr>
 								<th>Roof</th>
@@ -388,25 +376,25 @@ componentWillMount()
                             </tr>
                             </tbody>
                         </table> */}
-                    </div>
-                </section>
-      
-    </div>
-  </div>
-            
-    <div className="row renovationcosttable">
-    <div className="col-md-6 col-sm-12 col-xs-12" >
-        	<section className="panel">
-                    <header className="panel-heading main-bg">
-                       Heating
+                                        </div>
+                                    </section>
+
+                                </div>
+                            </div>
+
+                            <div className="row renovationcosttable">
+                                <div className="col-md-6 col-sm-12 col-xs-12" >
+                                    <section className="panel">
+                                        <header className="panel-heading main-bg">
+                                            Heating
                     </header>
-                    <div className="panel-body table-responsive">
-                         <Table header={HEATING}
-                        data={this.props.RCAssumptionsApi}
-                          remove={this.removeRCA}
-                          Name={data}
-                        />
-                        {/* <table className="table  table-hover general-table">
+                                        <div className="panel-body table-responsive">
+                                            <Table header={HEATING}
+                                                data={this.props.RCAssumptionsApi}
+                                                remove={this.removeRCA}
+                                                Name={data}
+                                            />
+                                            {/* <table className="table  table-hover general-table">
                             <thead>
                             <tr>
 								<th> Heating</th>
@@ -461,23 +449,23 @@ componentWillMount()
                             </tr>
                             </tbody>
                         </table> */}
-                    </div>
-                </section>
-     
-    </div>
-    <div className="col-md-6 col-sm-12 col-xs-12" >
-        	<section className="panel">
-                    <header className="panel-heading main-bg">
-                        Hot Water
-                        
+                                        </div>
+                                    </section>
+
+                                </div>
+                                <div className="col-md-6 col-sm-12 col-xs-12" >
+                                    <section className="panel">
+                                        <header className="panel-heading main-bg">
+                                            Hot Water
+
                     </header>
-                    <div className="panel-body table-responsive">
-                           <Table header={HOT_WATER}
-                        data={this.props.RCAssumptionsApi}
-                          remove={this.removeRCA}
-                          Name={data}
-                        />
-                        {/* <table className="table  table-hover general-table">
+                                        <div className="panel-body table-responsive">
+                                            <Table header={HOT_WATER}
+                                                data={this.props.RCAssumptionsApi}
+                                                remove={this.removeRCA}
+                                                Name={data}
+                                            />
+                                            {/* <table className="table  table-hover general-table">
                             <thead>
                             <tr>
 								<th>Hot Water</th>
@@ -532,24 +520,24 @@ componentWillMount()
                             </tr>
                             </tbody>
                         </table> */}
-                    </div>
-                </section>
-      
-    </div>
-        
-        <div className="clearfix"></div>
-         <div className="col-md-6 col-sm-12 col-xs-12" >
-        	<section className="panel">
-                    <header className="panel-heading main-bg">
-                        Interior
+                                        </div>
+                                    </section>
+
+                                </div>
+
+                                <div className="clearfix"></div>
+                                <div className="col-md-6 col-sm-12 col-xs-12" >
+                                    <section className="panel">
+                                        <header className="panel-heading main-bg">
+                                            Interior
                     </header>
-                    <div className="panel-body table-responsive">
-                              <Table header={INTERIOR}
-                        data={this.props.RCAssumptionsApi}
-                          remove={this.removeRCA}
-                          Name={data}
-                        />
-                        {/* <table className="table  table-hover general-table">
+                                        <div className="panel-body table-responsive">
+                                            <Table header={INTERIOR}
+                                                data={this.props.RCAssumptionsApi}
+                                                remove={this.removeRCA}
+                                                Name={data}
+                                            />
+                                            {/* <table className="table  table-hover general-table">
                             <thead>
                             <tr>
 								<th>Interior</th>
@@ -604,24 +592,24 @@ componentWillMount()
                             </tr>
                             </tbody>
                         </table> */}
-                    </div>
-                </section>
-     
-    </div>
-        
-       
-          <div className="col-md-6 col-sm-12 col-xs-12" >
-        	<section className="panel">
-                    <header className="panel-heading main-bg">
-                       Overall Ballpark
+                                        </div>
+                                    </section>
+
+                                </div>
+
+
+                                <div className="col-md-6 col-sm-12 col-xs-12" >
+                                    <section className="panel">
+                                        <header className="panel-heading main-bg">
+                                            Overall Ballpark
                     </header>
-                    <div className="panel-body table-responsive">
-                           <Table header={OVERALL_BALLPARK}
-                        data={this.props.RCAssumptionsApi}
-                          remove={this.removeRCA}
-                          Name={data}
-                        />
-                        {/* <table className="table  table-hover general-table">
+                                        <div className="panel-body table-responsive">
+                                            <Table header={OVERALL_BALLPARK}
+                                                data={this.props.RCAssumptionsApi}
+                                                remove={this.removeRCA}
+                                                Name={data}
+                                            />
+                                            {/* <table className="table  table-hover general-table">
                             <thead>
                             <tr>
 								<th>Overall Ballpark</th>
@@ -696,24 +684,24 @@ componentWillMount()
                             </tr>
                             </tbody>
                         </table> */}
-                    </div>
-                </section>
-     
-    </div>
-        {/* window estimate table */}
-        
-         <div className="col-md-6 col-sm-12 col-xs-12" >
-        	<section className="panel">
-                    <header className="panel-heading main-bg">
-                       Window Estimate
+                                        </div>
+                                    </section>
+
+                                </div>
+                                {/* window estimate table */}
+
+                                <div className="col-md-6 col-sm-12 col-xs-12" >
+                                    <section className="panel">
+                                        <header className="panel-heading main-bg">
+                                            Window Estimate
                     </header>
-                    <div className="panel-body table-responsive">
-                              <Table header={WINDOW_ESTIMATE}
-                        data={this.props.RCAssumptionsApi}
-                          remove={this.removeRCA}
-                          Name={data}
-                        />
-                        {/* <table className="table  table-hover general-table">
+                                        <div className="panel-body table-responsive">
+                                            <Table header={WINDOW_ESTIMATE}
+                                                data={this.props.RCAssumptionsApi}
+                                                remove={this.removeRCA}
+                                                Name={data}
+                                            />
+                                            {/* <table className="table  table-hover general-table">
                             <thead>
                             <tr>
 								<th> Window Estimate</th>
@@ -769,25 +757,25 @@ componentWillMount()
                                 
                             </tbody>
                         </table> */}
-                    </div>
-                </section>
-     
-    </div>
-        
-        {/* -electric table */}
-        <div className="col-md-6 col-sm-12 col-xs-12" >
-        	<section className="panel">
-                    <header className="panel-heading main-bg">
-                       Electric
-                    </header>
-                    <div className="panel-body table-responsive">
+                                        </div>
+                                    </section>
 
-                            <Table header={ELECTRIC}
-                        data={this.props.RCAssumptionsApi}
-                          remove={this.removeRCA}
-                          Name={data}
-                        />
-                        {/* <table className="table  table-hover general-table">
+                                </div>
+
+                                {/* -electric table */}
+                                <div className="col-md-6 col-sm-12 col-xs-12" >
+                                    <section className="panel">
+                                        <header className="panel-heading main-bg">
+                                            Electric
+                    </header>
+                                        <div className="panel-body table-responsive">
+
+                                            <Table header={ELECTRIC}
+                                                data={this.props.RCAssumptionsApi}
+                                                remove={this.removeRCA}
+                                                Name={data}
+                                            />
+                                            {/* <table className="table  table-hover general-table">
                             <thead>
                             <tr>
 								<th>  Electric</th>
@@ -843,24 +831,24 @@ componentWillMount()
                                 
                             </tbody>
                         </table> */}
-                    </div>
-                </section>
-     
-    </div>
-      {/* -con. interest table-- */}  
-        <div className="clearfix"></div>
-         <div className="col-md-6 col-sm-12 col-xs-12" >
-        	<section className="panel">
-                    <header className="panel-heading main-bg">
-                       Con. Interest
+                                        </div>
+                                    </section>
+
+                                </div>
+                                {/* -con. interest table-- */}
+                                <div className="clearfix"></div>
+                                <div className="col-md-6 col-sm-12 col-xs-12" >
+                                    <section className="panel">
+                                        <header className="panel-heading main-bg">
+                                            Con. Interest
                     </header>
-                    <div className="panel-body table-responsive">
-                             <Table header={CON_INTEREST}
-                       data={this.props.RCAssumptionsApi}
-                         remove={this.removeRCA}
-                         Name={data}
-                        />
-                        {/* <table className="table  table-hover general-table">
+                                        <div className="panel-body table-responsive">
+                                            <Table header={CON_INTEREST}
+                                                data={this.props.RCAssumptionsApi}
+                                                remove={this.removeRCA}
+                                                Name={data}
+                                            />
+                                            {/* <table className="table  table-hover general-table">
                             <thead>
                             <tr>
 								<th  className="text-right">Con. Interest</th>
@@ -916,24 +904,24 @@ componentWillMount()
                                 
                             </tbody>
                         </table> */}
-                    </div>
-                </section>
-     
-    </div>
-        {/* -Entry way table */}
-        
-          <div className="col-md-6 col-sm-12 col-xs-12" >
-        	<section className="panel">
-                    <header className="panel-heading main-bg">
-                       Entryway
+                                        </div>
+                                    </section>
+
+                                </div>
+                                {/* -Entry way table */}
+
+                                <div className="col-md-6 col-sm-12 col-xs-12" >
+                                    <section className="panel">
+                                        <header className="panel-heading main-bg">
+                                            Entryway
                     </header>
-                    <div className="panel-body table-responsive">
-                             <Table header={ENTRYWAY}
-                        data={this.props.RCAssumptionsApi}
-                          remove={this.removeRCA}
-                          Name={data}
-                        />
-                        {/* <table className="table  table-hover general-table">
+                                        <div className="panel-body table-responsive">
+                                            <Table header={ENTRYWAY}
+                                                data={this.props.RCAssumptionsApi}
+                                                remove={this.removeRCA}
+                                                Name={data}
+                                            />
+                                            {/* <table className="table  table-hover general-table">
                             <thead>
                             <tr>
 								<th>Entryway</th>
@@ -989,24 +977,24 @@ componentWillMount()
                                 
                             </tbody>
                         </table> */}
-                    </div>
-                </section>
-     
-    </div>
-        {/* -plumbing Table- */}
-        
-        <div className="col-md-6 col-sm-12 col-xs-12" >
-        	<section className="panel">
-                    <header className="panel-heading main-bg">
-                      Plumbing
+                                        </div>
+                                    </section>
+
+                                </div>
+                                {/* -plumbing Table- */}
+
+                                <div className="col-md-6 col-sm-12 col-xs-12" >
+                                    <section className="panel">
+                                        <header className="panel-heading main-bg">
+                                            Plumbing
                     </header>
-                    <div className="panel-body table-responsive">
-                              <Table header={PLUMBING}
-                        data={this.props.RCAssumptionsApi}
-                          remove={this.removeRCA}
-                          Name={data}
-                        />
-                        {/* <table className="table  table-hover general-table">
+                                        <div className="panel-body table-responsive">
+                                            <Table header={PLUMBING}
+                                                data={this.props.RCAssumptionsApi}
+                                                remove={this.removeRCA}
+                                                Name={data}
+                                            />
+                                            {/* <table className="table  table-hover general-table">
                             <thead>
                             <tr>
 								<th>Plumbing</th>
@@ -1062,95 +1050,96 @@ componentWillMount()
                                 
                             </tbody>
                         </table> */}
-                    </div>
-                </section>
-     
-    </div>
-        
-        
+                                        </div>
+                                    </section>
 
-    
-        
-        
-        
-        
-  </div>
-		
-        {/*  page end */}
-        </section>
-    </section>
-    {/* main content end */}
-        </HeadBar>
-        
-         {/* Modal */}
-         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabIndex="-1" id="successmsg" className="modal fade">
-         <div className="modal-dialog modal-md">
-             <div className="modal-content">
-             <Modal show={this.state.showModal} onHide={this.close.bind(this)} >
-                                 
-             <Modal.Header closeButton>
-             <Modal.Title>RC Assumptions</Modal.Title>
-           </Modal.Header>                
-           
-           
-           <Modal.Body>
-               <div className="row">
-                 <div className="col-md-12 center-block text-center">
-                   <i className="fa fa-check fa-2x success-icon"></i>
-                   
-                   <h4 className="text-center">Are you sure you want to delete?</h4>
-                   <h6>{this.state.deleteRCAssumptions}</h6>
-                         
-               </div>
-               </div>
-             </Modal.Body>
-              
-         
-           <Modal.Footer className="modal-footer text-center center-block">
-           <Button className="danger-btn " onClick={this.close.bind(this)}>Cancel</Button>
-             <Button className="default-btn reactbtn" onClick={this.removeRCAssumptionsData.bind(this)}>Confirm</Button>
-           </Modal.Footer>
-         </Modal>
-         </div>
-       </div>
-       </div>
-           {/* modal */}
-      </div>
-    );
-  }
+                                </div>
+
+
+
+
+
+
+
+
+                            </div>
+
+                            {/*  page end */}
+                        </section>
+                    </section>
+                    {/* main content end */}
+                </HeadBar>
+
+                {/* Modal */}
+                <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabIndex="-1" id="successmsg" className="modal fade">
+                    <div className="modal-dialog modal-md">
+                        <div className="modal-content">
+                            <Modal show={this.state.showModal} onHide={this.close.bind(this)} >
+
+                                <Modal.Header closeButton>
+                                    <Modal.Title>RC Assumptions</Modal.Title>
+                                </Modal.Header>
+
+
+                                <Modal.Body>
+                                    <div className="row">
+                                        <div className="col-md-12 center-block text-center">
+                                            <i className="fa fa-check fa-2x success-icon"></i>
+
+                                            <h4 className="text-center">Are you sure you want to delete?</h4>
+                                            <h6>{this.state.deleteRCAssumptions}</h6>
+
+                                        </div>
+                                    </div>
+                                </Modal.Body>
+
+
+                                <Modal.Footer className="modal-footer text-center center-block">
+                                    <Button className="danger-btn " onClick={this.close.bind(this)}>Cancel</Button>
+                                    <Button className="default-btn reactbtn" onClick={this.removeRCAssumptionsData.bind(this)}>Confirm</Button>
+                                </Modal.Footer>
+                            </Modal>
+                        </div>
+                    </div>
+                </div>
+                {/* modal */}
+            </div>
+        );
+    }
 }
 
 RCAssumptions.propTypes = {};
-   
-   RCAssumptions = reduxForm({
-     form: 'RCAssumptions'
-   // a unique identifier for this form
-   })(RCAssumptions)
-   
-   
-   
-   function mapStateToProps(state, actions) {
-   
-      //console.log("fetchRcAssumptionsData",state.fetchRcAssumptionsData)
 
-      	if(state.fetchRCAssumptionDelete)
-	{
-	   console.log("RCA Assunption Delete",state.fetchRCAssumptionDelete.msg)
+RCAssumptions = reduxForm({
+    form: 'RCAssumptions'
+    // a unique identifier for this form
+})(RCAssumptions)
 
-	   fetchRCAssumptionDeleteMsg:state.fetchRCAssumptionDelete.msg
 
-	}
-   
-   
-           if (state.fetchRcAssumptionsData  && state.fetchRcAssumptionsData && state.fetchRcAssumptionsData.length > 0) {
 
-              // console.log("fetchRcAssumptionsData",state.fetchRcAssumptionsData)
-                 //debugger;
-           return {RCAssumptionsApi: state.fetchRcAssumptionsData,
-            fetchRCAssumptionDeleteMsg:state.fetchRCAssumptionDelete.msg }
-       } else {
-           return {};
-       }
+function mapStateToProps(state, actions) {
+
+    //console.log("fetchRcAssumptionsData",state.fetchRcAssumptionsData)
+
+    if (state.fetchRCAssumptionDelete) {
+        console.log("RCA Assunption Delete", state.fetchRCAssumptionDelete.msg)
+
+        fetchRCAssumptionDeleteMsg: state.fetchRCAssumptionDelete.msg
+
     }
 
-export default connect (mapStateToProps) (RCAssumptions);
+
+    if (state.fetchRcAssumptionsData && state.fetchRcAssumptionsData && state.fetchRcAssumptionsData.length > 0) {
+
+        // console.log("fetchRcAssumptionsData",state.fetchRcAssumptionsData)
+        //debugger;
+        return {
+            RCAssumptionsApi: state.fetchRcAssumptionsData,
+            fetchRCAssumptionDeleteMsg: state.fetchRCAssumptionDelete.msg
+        }
+    } else {
+        return {};
+    }
+}
+
+export default connect(mapStateToProps)(RCAssumptions);

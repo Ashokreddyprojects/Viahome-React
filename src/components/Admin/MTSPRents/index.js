@@ -6,8 +6,8 @@ import { Field, reduxForm } from 'redux-form';
 import Table from '../MTSPRentsTable/Table';
 import { fetchFMRRentsData, FMRRentsDeleteFetchData } from '../../../AdminAction/FMRRents';
 import * as AdminConstants from '../AdminConstants';
-import { Button, Modal } from 'react-bootstrap';
-import Spinner from 'react-spinner-material';
+import { Button, Modal, Pagination } from 'react-bootstrap';
+
 
 
 
@@ -23,12 +23,21 @@ class MTSPRents extends Component {
             deleteFMRRents: "",
             urlRemove: "",
             removeobj: {},
-            spinnerShow: true,
-            spinnerShowDisplay: true
-        }
 
+            activePage: 1
+        }
+        this.handleSelect = this.handleSelect.bind(this);
         this.removeFMRRents = this.removeFMRRents.bind(this);
         this.autofreshData = this.autofreshData.bind(this);
+    }
+
+    handleSelect(eventKey) {
+        // console.log("eventKey",eventKey)
+        this.autofreshData(eventKey)
+        this.setState({
+            activePage: eventKey
+        });
+
     }
 
     close() {
@@ -70,12 +79,11 @@ class MTSPRents extends Component {
 
     }
 
-    autofreshData() {
+    autofreshData(num) {
+        //  console.log("Number",num)
 
         this.setState({ removeMsg: this.props.fetchFMRRentsDeleteMsg })
-        // console.log("sucess",this.state.removeMsg)
-
-        var Url2 = AdminConstants.ApiCallUrl + 'fmrRents';
+        var Url2 = AdminConstants.ApiCallUrl + 'fmrRents/' + num;
         var paramString = "list";
 
         this.props.dispatch(fetchFMRRentsData(Url2, paramString));
@@ -83,14 +91,14 @@ class MTSPRents extends Component {
 
     componentWillMount() {
 
+        let num = 1;
 
-        this.autofreshData()
+        this.autofreshData(num)
 
     }
     componentWillReceiveProps(nextProps) {
         // console.log("Hello World")
-        this.setState({ spinnerShow: false })
-        this.setState({ spinnerShowDisplay: false })
+
 
     }
 
@@ -152,15 +160,7 @@ class MTSPRents extends Component {
                     </header>
                                 <div className="panel-body table-responsive">
 
-                                    <center>
-                                        <div className="mask" style={{ display: this.state.spinnerShowDisplay ? 'block' : 'none' }} width={300} height={500}>
-                                            <Spinner style={{ "position": "relative", "top": "60%" }} width={300}
-                                                height={500}
-                                                spinnerColor={"#338b7a"}
-                                                spinnerWidth={5}
-                                                show={this.state.spinnerShow} />
-                                        </div>
-                                    </center>
+
 
                                     <Table data={this.props.fetchFMRRentsData}
                                         remove={this.removeFMRRents}
@@ -174,6 +174,18 @@ class MTSPRents extends Component {
                         </section>
                     </section>
                     {/* main content end */}
+
+                    <Pagination className="pull-right" style={{ "marginRight": "18px" }}
+                        prev
+                        next
+                        first
+                        last
+                        ellipsis
+                        boundaryLinks
+                        items={this.props.PaginationFMRCount}
+                        maxButtons={5}
+                        activePage={this.state.activePage}
+                        onSelect={this.handleSelect} />
 
                 </HeadBar>
 
@@ -234,7 +246,7 @@ function mapStateToProps(state, actions) {
 
 
     if (state.fetchFMRRentsDelete.condition) {
-        console.log("fetchFMRRentsDelete", state.fetchFMRRentsDelete.msg)
+        //  console.log("fetchFMRRentsDelete", state.fetchFMRRentsDelete.msg)
 
         fetchFMRRentsDeleteMsg: state.fetchFMRRentsDelete.msg
 
@@ -243,12 +255,14 @@ function mapStateToProps(state, actions) {
     // console.log("fetchFMRRentsData 1", state.fetchFMRRentsData)
 
 
-    if (state.fetchFMRRentsData && state.fetchFMRRentsData.length > 0) {
-        // console.log("fetchFMRRentsData 2", state.fetchFMRRentsData)
+    if (state.fetchFMRRentsData && state.fetchFMRRentsData.App && state.fetchFMRRentsData.App.length > 0) {
+        //console.log("fetchFMRRentsData 2", state.fetchFMRRentsData.App)
+        let totalPages = Math.ceil(state.fetchFMRRentsData.count / 100);
         //debugger;
         return {
-            fetchFMRRentsData: state.fetchFMRRentsData,
-            fetchFMRRentsDeleteMsg: state.fetchFMRRentsDelete.msg
+            fetchFMRRentsData: state.fetchFMRRentsData.App,
+            fetchFMRRentsDeleteMsg: state.fetchFMRRentsDelete.msg,
+            PaginationFMRCount: totalPages
         }
     } else {
         return {};

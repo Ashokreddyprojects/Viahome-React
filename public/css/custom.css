@@ -1684,3 +1684,9 @@ height: 23px;
 .danger-btn:hover{ background-color: #e30707 !important;
     border-color: #e30707 !important; 
 
+}
+@media only screen and (min-width:320px) and (max-width:425px){
+body {
+    margin-top: 80px !important;
+}
+}

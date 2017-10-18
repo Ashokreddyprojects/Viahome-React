@@ -5,7 +5,7 @@ class TableRow extends Component {
 
     render() {
 
-        console.log("Table Row data",this.props.data.Number_of_Units)
+       // console.log("Table Row data",this.props.data.Number_of_Units)
 
         return (
 

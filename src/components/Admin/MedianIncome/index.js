@@ -1,171 +1,162 @@
 import React, { Component } from 'react';
 import HeadBar from '../Header';
-import  { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import Table from '../MedianIncomeTable/Table';
 import { fetchMedianIncomeData, medianIncomeDeleteFetchData } from '../../../AdminAction/medianIncomeActions';
 import * as AdminConstants from '../AdminConstants';
 import { Button, Modal, Pagination } from 'react-bootstrap';
-import Spinner from 'react-spinner-material';
 
 
- 
-var AdminData={
-    "FirstName"	: "Ashok Reddy",
-    "LastName"	: "Penamalli",
-	"email"		:"ashok@betabulls",
-	"username"	: "BetaBulls",
-	"password"	:"1234",
-	"city"		: "Hyd",
-	"address"	: "Nlr",
-	"phone"		: "9988776655",
-	"agree"		: false
+
+
+var AdminData = {
+    "FirstName": "Ashok Reddy",
+    "LastName": "Penamalli",
+    "email": "ashok@betabulls",
+    "username": "BetaBulls",
+    "password": "1234",
+    "city": "Hyd",
+    "address": "Nlr",
+    "phone": "9988776655",
+    "agree": false
 }
 
 
 class MedianIncome extends Component {
-       constructor(props) {
-      super(props);
-     this.state={
-         removeMsg:"",
-         showModal:false,
-         deleteMedianIncomeName:"",
-         urlRemove:"",
-         removeobj:{},
-        spinnerShow1: true,
-        spinnerShowDisplay1: true,
-        activePage:1
-       
-    }
-    this.handleSelect = this.handleSelect.bind(this);
-      this.removeMedianIncome = this.removeMedianIncome.bind(this);
-       this.autoFreashData = this.autoFreashData.bind(this);
-   };
+    constructor(props) {
+        super(props);
+        this.state = {
+            removeMsg: "",
+            showModal: false,
+            deleteMedianIncomeName: "",
+            urlRemove: "",
+            removeobj: {},
+            activePage: 1
+
+        }
+        this.handleSelect = this.handleSelect.bind(this);
+        this.removeMedianIncome = this.removeMedianIncome.bind(this);
+        this.autoFreashData = this.autoFreashData.bind(this);
+    };
 
 
 
 
-      handleSelect(eventKey) {
+    handleSelect(eventKey) {
         //  console.log("eventKey",eventKey)
         this.autoFreashData(eventKey)
-    this.setState({
-      activePage: eventKey
-    });
-    
-  }
+        this.setState({
+            activePage: eventKey
+        });
 
-    close()
-    {
+    }
 
-        this.setState({showModal:false})
+    close() {
+
+        this.setState({ showModal: false })
     }
 
 
- removeMedianIncome(removeData)
-  {
-      
-    
-    this.setState({showModal:true})
+    removeMedianIncome(removeData) {
 
 
-    var Url = AdminConstants.ApiCallUrl+'deleteMedianIncome';
+        this.setState({ showModal: true })
+
+
+        var Url = AdminConstants.ApiCallUrl + 'deleteMedianIncome';
         // alert("selected"+selectedData._id);
-        let id={
-            "id":removeData._id,
-            "Area_Name":removeData.Area_Name
+        let id = {
+            "id": removeData._id,
+            "Area_Name": removeData.Area_Name
         }
-        this.setState({deleteMedianIncomeName:removeData.Area_Name})
-        this.setState({urlRemove:Url})
-        this.setState({removeobj:id})
-  // var remove12= this.props.dispatch(medianIncomeDeleteFetchData(Url3, id));
-   //console.log("remove Data",remove12)
-    //  this.autoFreashData()
-   
+        this.setState({ deleteMedianIncomeName: removeData.Area_Name })
+        this.setState({ urlRemove: Url })
+        this.setState({ removeobj: id })
+        // var remove12= this.props.dispatch(medianIncomeDeleteFetchData(Url3, id));
+        //console.log("remove Data",remove12)
+        //  this.autoFreashData()
 
-  }
-
-
-
-    removeMedianIncomeData()
-    {
-         console.log("removeData")
-            console.log(this.state.removeobj)
-
-this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state.removeobj))
-    this.autoFreashData()
-        this.setState({showModal:false})
-
-    }
-
-    autoFreashData(num)
-    {
-        this.setState({removeMsg:this.props.fetchMedianIncomeDeleteMsg})
-      // console.log("sucess",this.state.removeMsg)
-         
-          var Url2= AdminConstants.ApiCallUrl+'medianIncome/'+num;
-    var paramString="list";
-
-    this.props.dispatch(fetchMedianIncomeData(Url2, paramString));
-    
-    
-         
 
     }
 
 
 
+    removeMedianIncomeData() {
+        console.log("removeData")
+        console.log(this.state.removeobj)
 
-   
-    componentWillMount()
-    {
-  let num=1;
-  
- this.autoFreashData(num)
-
-    }
-       componentWillReceiveProps(nextProps) {
-          // console.log("Hello World")
-      this.setState({spinnerShow1: false})
-      this.setState({spinnerShowDisplay1: false})
+        this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state.removeobj))
+        this.autoFreashData()
+        this.setState({ showModal: false })
 
     }
-   
 
-   
-  render() {
+    autoFreashData(num) {
+        this.setState({ removeMsg: this.props.fetchMedianIncomeDeleteMsg })
+        // console.log("sucess",this.state.removeMsg)
+
+        var Url2 = AdminConstants.ApiCallUrl + 'medianIncome/' + num;
+        var paramString = "list";
+
+        this.props.dispatch(fetchMedianIncomeData(Url2, paramString));
 
 
-    var data=this.props.location.state;
 
-    
-    return (
-      <div>
-         <HeadBar Name={data} >
-        
-           {/*main content start*/}
-    <section id="main-content">
-        <section className="wrapper">
-		
-			<div className="col-md-6 col-sm-12 col-xs-12 no-padding-left">
-                    <ul className="breadcrumbs-alt">
-                        <li>
-                            <Link to={{ pathname: '/AdminDashBoard', state: data}} className="">Dashboard</Link>
-                        </li>
-                         <li>
-                            <Link className="current" to="DashBoardMedianIncome">Median Income</Link>
-                        </li>
-                      {/*   <li>
+
+    }
+
+
+
+
+
+    componentWillMount() {
+        let num = 1;
+
+        this.autoFreashData(num)
+
+    }
+    componentWillReceiveProps(nextProps) {
+
+
+    }
+
+
+
+    render() {
+
+
+        var data = this.props.location.state;
+
+
+        return (
+            <div>
+                <HeadBar Name={data} >
+
+                    {/*main content start*/}
+                    <section id="main-content">
+                        <section className="wrapper">
+
+                            <div className="col-md-6 col-sm-12 col-xs-12 no-padding-left">
+                                <ul className="breadcrumbs-alt">
+                                    <li>
+                                        <Link to={{ pathname: '/AdminDashBoard', state: data }} className="">Dashboard</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="current" to="DashBoardMedianIncome">Median Income</Link>
+                                    </li>
+                                    {/*   <li>
                             <a className="current" href="#">Request Project</a>
                         </li>  */}
-                    </ul>
-					
-					
-                </div>
-            
-				<div className="col-md-6 col-sm-12 col-xs-12 brfileadjust no-padding-right">
-                  
-					{/* <div className="form-group col-md-10 col-sm-8 col-xs-12">
+                                </ul>
+
+
+                            </div>
+
+                            <div className="col-md-6 col-sm-12 col-xs-12 brfileadjust no-padding-right">
+
+                                {/* <div className="form-group col-md-10 col-sm-8 col-xs-12">
 						<input type="file" name="img[]" className="file" />
 						<div className="input-group pull-right">
 						  <span className="input-group-addon"><i className="fa fa-file"></i></span>
@@ -176,41 +167,33 @@ this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state
 						</div>
 					</div>
                          */}
-					{/* <div className="col-md-2 col-sm-4 col-xs-12">
+                                {/* <div className="col-md-2 col-sm-4 col-xs-12">
 						<Link className="default-btn pull-right addbtn" to="DashBoardMedianIncomeAdd">Add</Link>
 					</div> */}
 
-                    <div className="col-md-12 col-sm-12 col-xs-12">
-						<Link className="default-btn pull-right addbtn" to={{ pathname: '/DashBoardMedianIncomeAdd', state: data}} >Add</Link>
-					</div>
-					
-				</div>
-            <div className="clearfix"></div>
-        {/* page start*/}
-			<section className="panel">
-                    <header className="panel-heading main-bg">
-                        Median Income
+                                <div className="col-md-12 col-sm-12 col-xs-12">
+                                    <Link className="default-btn pull-right addbtn" to={{ pathname: '/DashBoardMedianIncomeAdd', state: data }} >Add</Link>
+                                </div>
+
+                            </div>
+                            <div className="clearfix"></div>
+                            {/* page start*/}
+                            <section className="panel">
+                                <header className="panel-heading main-bg">
+                                    Median Income
                         {/* <span className="tools pull-right">
                             <a href="javascript:;" className="fa fa-chevron-down"></a>
                             <a href="javascript:;" className="fa fa-cog"></a>
                             <a href="javascript:;" className="fa fa-times"></a>
                          </span> */}
-                    </header>
-                    <div className="panel-body table-responsive">
-                    {/* <center>  <span className="dataRemoveSucessMsg">{this.props.fetchMedianIncomeDeleteMsg}</span></center> */}
-                        {/* <Table data = {tableData} /> */}
-<center>
-                        <div className="mask" style={{ display: this.state.spinnerShowDisplay1 ? 'block' : 'none' }} width={300}  height={500}>
-              <Spinner style={{"position":"relative", "top":"60%"}} width={300}
-                  height={500}
-                  spinnerColor={"#338b7a"}
-                  spinnerWidth={5}
-                  show={this.state.spinnerShow1} />
-           </div>
-           </center>
-                        <Table data = {this.props.MedianIncomeApi} remove={this.removeMedianIncome} Name={data} />
+                                </header>
+                                <div className="panel-body table-responsive">
+                                    {/* <center>  <span className="dataRemoveSucessMsg">{this.props.fetchMedianIncomeDeleteMsg}</span></center> */}
+                                    {/* <Table data = {tableData} /> */}
 
-                        {/* <table className="table  table-hover general-table mangaeicons responsivetbl-adjustadmindashboard">
+                                    <Table data={this.props.MedianIncomeApi} remove={this.removeMedianIncome} Name={data} />
+
+                                    {/* <table className="table  table-hover general-table mangaeicons responsivetbl-adjustadmindashboard">
                              <thead>
                             <tr className="tblalignmentmedianincome">
 								
@@ -304,66 +287,66 @@ this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state
                             </tr>
                             </tbody>
                         </table> */}
+                                </div>
+                            </section>
+
+                            {/* page end*/}
+                        </section>
+                    </section>
+                    {/* main content end*/}
+
+                    <Pagination className="pull-right" style={{ "marginRight": "18px" }}
+                        prev
+                        next
+                        first
+                        last
+                        ellipsis
+                        boundaryLinks
+                        items={this.props.PaginationCount}
+                        maxButtons={5}
+                        activePage={this.state.activePage}
+                        onSelect={this.handleSelect} />
+                </HeadBar>
+
+                {/*  Modal  */}
+
+
+                <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabIndex="-1" id="successmsg" className="modal fade">
+                    <div className="modal-dialog modal-md">
+                        <div className="modal-content">
+                            <Modal show={this.state.showModal} onHide={this.close.bind(this)} >
+
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Median Income</Modal.Title>
+                                </Modal.Header>
+
+
+                                <Modal.Body>
+                                    <div className="row">
+                                        <div className="col-md-12 center-block text-center">
+                                            {/* <i className="fa fa-check fa-2x success-icon"></i> */}
+
+                                            <h4 className="text-center">Are you sure you want to delete?</h4>
+                                            <h6>{this.state.deleteMedianIncomeName}</h6>
+
+                                        </div>
+                                    </div>
+                                </Modal.Body>
+
+
+                                <Modal.Footer className="modal-footer text-center center-block">
+                                    <Button className="danger-btn " onClick={this.close.bind(this)}>Cancel</Button>
+                                    <Button className="default-btn reactbtn" onClick={this.removeMedianIncomeData.bind(this)}>Confirm</Button>
+                                </Modal.Footer>
+                            </Modal>
+                        </div>
                     </div>
-                </section>
-            
-        {/* page end*/}
-        </section>
-    </section>
-    {/* main content end*/}
-      
-        <Pagination className="pull-right"  style={{"marginRight":"18px"}}
-        prev
-        next
-        first
-        last
-        ellipsis
-        boundaryLinks
-        items={this.props.PaginationCount}
-        maxButtons={5}
-        activePage={this.state.activePage}
-        onSelect={this.handleSelect} />
-        </HeadBar>
+                </div>
+                {/*  modal  */}
 
-           {/*  Modal  */}
-
-                   
-         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabIndex="-1" id="successmsg" className="modal fade">
-        <div className="modal-dialog modal-md">
-            <div className="modal-content">
-            <Modal show={this.state.showModal} onHide={this.close.bind(this)} >
-                                
-            <Modal.Header closeButton>
-            <Modal.Title>Median Income</Modal.Title>
-          </Modal.Header>                
-          
-          
-          <Modal.Body>
-              <div className="row">
-                <div className="col-md-12 center-block text-center">
-                  {/* <i className="fa fa-check fa-2x success-icon"></i> */}
-                  
-                  <h4 className="text-center">Are you sure you want to delete?</h4>
-                  <h6>{this.state.deleteMedianIncomeName}</h6>
-                        
-              </div>
-              </div>
-            </Modal.Body>
-             
-        
-          <Modal.Footer className="modal-footer text-center center-block">
-          <Button className="danger-btn " onClick={this.close.bind(this)}>Cancel</Button>
-            <Button className="default-btn reactbtn" onClick={this.removeMedianIncomeData.bind(this)}>Confirm</Button>
-          </Modal.Footer>
-        </Modal>
-        </div>
-      </div>
-      </div>
-          {/*  modal  */}
-     
-      </div>
-    );
-  }
+            </div>
+        );
+    }
 }
 
 
@@ -372,42 +355,42 @@ MedianIncome.propTypes = {
 
 
 };
-   
-   MedianIncome = reduxForm({
-     form: 'MedianIncome'
-   // a unique identifier for this form
-   })(MedianIncome)
-   
-   
-   
-   function mapStateToProps(state, actions) {
-       
-        
-        if(state.fetchMedianIncomeDelete.condition)
-            {
-               //console.log("fetchMedianIncomeDelete",state.fetchMedianIncomeDelete.msg)
-              fetchMedianIncomeDeleteMsg:state.fetchMedianIncomeDelete.msg
 
-            }
-   
-    //   console.log("App",state.fetchMedianIncomeData.App)
-   
-   
-           if (state.fetchMedianIncomeData  && state.fetchMedianIncomeData.App && state.fetchMedianIncomeData.App.length > 0) {
+MedianIncome = reduxForm({
+    form: 'MedianIncome'
+    // a unique identifier for this form
+})(MedianIncome)
 
-                 console.log("MedianIncome ndDoc",state.fetchMedianIncomeData.count)
-                  let totalPages = Math.ceil(state.fetchMedianIncomeData.count / 100);
-                 //debugger;
-           return {MedianIncomeApi: state.fetchMedianIncomeData.App,
-            fetchMedianIncomeDeleteMsg:state.fetchMedianIncomeDelete.msg,
-            PaginationCount:totalPages
-         }
-       } else {
-           return {};
-       }
+
+
+function mapStateToProps(state, actions) {
+
+
+    if (state.fetchMedianIncomeDelete.condition) {
+        //console.log("fetchMedianIncomeDelete",state.fetchMedianIncomeDelete.msg)
+        fetchMedianIncomeDeleteMsg: state.fetchMedianIncomeDelete.msg
 
     }
-   
-           
 
-export default connect (mapStateToProps) (MedianIncome);
+    //   console.log("App",state.fetchMedianIncomeData.App)
+
+
+    if (state.fetchMedianIncomeData && state.fetchMedianIncomeData.App && state.fetchMedianIncomeData.App.length > 0) {
+
+        // console.log("MedianIncome ndDoc",state.fetchMedianIncomeData.count)
+        let totalPages = Math.ceil(state.fetchMedianIncomeData.count / 100);
+        //debugger;
+        return {
+            MedianIncomeApi: state.fetchMedianIncomeData.App,
+            fetchMedianIncomeDeleteMsg: state.fetchMedianIncomeDelete.msg,
+            PaginationCount: totalPages
+        }
+    } else {
+        return {};
+    }
+
+}
+
+
+
+export default connect(mapStateToProps)(MedianIncome);
