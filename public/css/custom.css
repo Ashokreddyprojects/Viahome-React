@@ -1328,7 +1328,8 @@ margin-top: -14px;
 .pagination>li>a, .pagination>li>span {
     position: relative;
     float: left;
-    padding: 6px 12px;
+    /* padding: 6px 12px; */
+      padding: 4px 8px;
     margin-left: -1px;
     line-height: 1.42857143;
     color: #338B7A;
@@ -1353,9 +1354,12 @@ margin-top: -14px;
         margin-top: 10px;
 }
 .addbtn{
-        padding-top: 11px;
-    /* margin-top: 0px; */
-    height: 40px;
+        /* padding-top: 11px; */
+    /* margin-top: 0px; */ 
+    /* height: 40px; */
+	    padding-top: 7px;
+    margin-top: 2px;
+    height: 35px;
     
 }
 .srchicon{ height: 40px;
@@ -1638,7 +1642,7 @@ height: 23px;
 }
 .panel {
    
-    margin-top: -5px !important;
+    margin-top: -10px !important;
 }
 .pnl-heading{margin-top: 20px;}
 }
@@ -1688,5 +1692,45 @@ height: 23px;
 @media only screen and (min-width:320px) and (max-width:425px){
 body {
     margin-top: 80px !important;
+}
+}
+@media only screen and (min-width:320px) and (max-width:767px){
+.addmedianincome-tblheader{
+	margin-top:20px;
+}
+.rcasumptions-tableheads{
+	margin-top:-16px;
+}
+}
+@media only screen and (min-width:375px) and (max-width:767px){
+.mtsp-tablehead{
+	margin-top:20px;
+}
+.rcasumptions-tablehead{
+    margin-top: -30px;
+}
+.renovationcosttable{
+	margin-top: 25px;
+	
+}
+.mngusradjust{
+	margin-top: 25px;
+	
+}
+}
+
+@media only screen and (min-width:320px) and (max-width:583px){
+
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    /* padding: 6px 12px; */
+      padding: 2px 6px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #338B7A;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #338B7A;
 }
 }

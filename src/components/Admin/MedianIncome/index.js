@@ -8,9 +8,6 @@ import { fetchMedianIncomeData, medianIncomeDeleteFetchData } from '../../../Adm
 import * as AdminConstants from '../AdminConstants';
 import { Button, Modal, Pagination } from 'react-bootstrap';
 
-
-
-
 var AdminData = {
     "FirstName": "Ashok Reddy",
     "LastName": "Penamalli",
@@ -33,7 +30,9 @@ class MedianIncome extends Component {
             deleteMedianIncomeName: "",
             urlRemove: "",
             removeobj: {},
-            activePage: 1
+            activePage: 1,
+            deletePopUp: false
+       
 
         }
         this.handleSelect = this.handleSelect.bind(this);
@@ -56,6 +55,7 @@ class MedianIncome extends Component {
     close() {
 
         this.setState({ showModal: false })
+        this.setState({deletePopUp: false})
     }
 
 
@@ -90,10 +90,14 @@ class MedianIncome extends Component {
         this.props.dispatch(medianIncomeDeleteFetchData(this.state.urlRemove, this.state.removeobj))
         this.autoFreashData()
         this.setState({ showModal: false })
+        this.setState({deletePopUp: true})
 
     }
 
     autoFreashData(num) {
+
+         
+
         this.setState({ removeMsg: this.props.fetchMedianIncomeDeleteMsg })
         // console.log("sucess",this.state.removeMsg)
 
@@ -102,14 +106,7 @@ class MedianIncome extends Component {
 
         this.props.dispatch(fetchMedianIncomeData(Url2, paramString));
 
-
-
-
     }
-
-
-
-
 
     componentWillMount() {
         let num = 1;
@@ -118,7 +115,6 @@ class MedianIncome extends Component {
 
     }
     componentWillReceiveProps(nextProps) {
-
 
     }
 
@@ -295,7 +291,7 @@ class MedianIncome extends Component {
                     </section>
                     {/* main content end*/}
 
-                    <Pagination className="pull-right" style={{ "marginRight": "18px" }}
+                    <Pagination className="pull-right" style={{ "marginRight": "18px","marginTop":"-9px" }}
                         prev
                         next
                         first
@@ -303,7 +299,7 @@ class MedianIncome extends Component {
                         ellipsis
                         boundaryLinks
                         items={this.props.PaginationCount}
-                        maxButtons={5}
+                        maxButtons={4}
                         activePage={this.state.activePage}
                         onSelect={this.handleSelect} />
                 </HeadBar>
@@ -344,6 +340,39 @@ class MedianIncome extends Component {
                 </div>
                 {/*  modal  */}
 
+                
+                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabIndex="-1" id="successmsg" className="modal fade">
+                        <div className="modal-dialog modal-md">
+                            <div className="modal-content">
+                                {/* <Modal show={this.state.showModal} onHide={this.updateClose} > */}
+                                <Modal show={this.state.deletePopUp}  >
+
+                                    {/* <Modal.Header closeButton> */}
+                                    <Modal.Header >
+                                        <Modal.Title>Delete Median Income</Modal.Title>
+                                    </Modal.Header>
+
+
+                                    <Modal.Body>
+                                        <div className="row">
+                                            <div className="col-md-12 center-block text-center">
+                                                <i className="fa fa-check fa-2x success-icon"></i>
+
+                                                <h4 className="text-center">{this.props.fetchMedianIncomeDeleteMsg}</h4>
+
+                                            </div>
+                                        </div>
+                                    </Modal.Body>
+
+
+                                    <Modal.Footer className="modal-footer text-center center-block">
+                                        <Button className="default-btn btnCenterPlace center-block" onClick={this.close.bind(this)}>Ok</Button>
+                                    </Modal.Footer>
+                                </Modal>
+                            </div>
+                        </div>
+                    </div>
+
             </div>
         );
     }
@@ -352,7 +381,6 @@ class MedianIncome extends Component {
 
 
 MedianIncome.propTypes = {
-
 
 };
 
@@ -378,7 +406,7 @@ function mapStateToProps(state, actions) {
     if (state.fetchMedianIncomeData && state.fetchMedianIncomeData.App && state.fetchMedianIncomeData.App.length > 0) {
 
         // console.log("MedianIncome ndDoc",state.fetchMedianIncomeData.count)
-        let totalPages = Math.ceil(state.fetchMedianIncomeData.count / 100);
+        let totalPages = Math.ceil(state.fetchMedianIncomeData.count / 10);
         //debugger;
         return {
             MedianIncomeApi: state.fetchMedianIncomeData.App,

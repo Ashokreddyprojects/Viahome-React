@@ -5,6 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import * as AdminConstants from '../AdminConstants';
 import { FMRRentsDeleteFetchData } from '../../../AdminAction/FMRRents';
 import NumberFormat from 'react-number-format';
+import EllipsisText  from 'react-ellipsis-text';
 
 class TableRow extends Component {
 
@@ -30,7 +31,7 @@ class TableRow extends Component {
         return (
 
             <tr>
-               <td width="400px" >{this.props.data.Area_Name}</td>
+               <td width="400px" ><EllipsisText text={this.props.data.Area_Name} length={'18'} /></td>
 						<td className="text-right"><NumberFormat value={this.props.data.Median_Income_2017.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
 						<td className="text-right"><NumberFormat value={this.props.data.Person_1.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>
 						<td className="text-right"><NumberFormat value={this.props.data.People_2.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'} /></td>

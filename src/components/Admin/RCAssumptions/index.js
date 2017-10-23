@@ -115,7 +115,7 @@ class RCAssumptions extends Component {
             deleteRCAssumptions: "",
             urlRemove: "",
             removeobj: {},
-
+            deletePopUp:""
         }
 
         this.removeRCA = this.removeRCA.bind(this);
@@ -125,6 +125,7 @@ class RCAssumptions extends Component {
     close() {
 
         this.setState({ showModal: false })
+        this.setState({ deletePopUp: false})
     }
 
     removeRCA(removeData) {
@@ -155,6 +156,7 @@ class RCAssumptions extends Component {
         this.props.dispatch(fetchRCAssumptionDeleteFetchData(this.state.urlRemove, this.state.removeobj))
         this.autofreshData()
         this.setState({ showModal: false })
+        this.setState({ deletePopUp: true})
 
     }
 
@@ -234,7 +236,7 @@ class RCAssumptions extends Component {
                             {/* <center><span className="dataRemoveSucessMsg">{this.props.fetchRCAssumptionDeleteMsg}</span></center> */}
 
                             <div className="row renovationcosttable">
-                                <div className="col-md-6 col-sm-12 col-xs-12" >
+                                <div className="col-md-6 col-sm-12 col-xs-12 rcasumptions-tablehead" >
                                     <section className="panel">
                                         <header className="panel-heading main-bg">
                                             Demolition
@@ -1103,6 +1105,40 @@ class RCAssumptions extends Component {
                     </div>
                 </div>
                 {/* modal */}
+
+                
+                                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabIndex="-1" id="successmsg" className="modal fade">
+                        <div className="modal-dialog modal-md">
+                            <div className="modal-content">
+                                {/* <Modal show={this.state.showModal} onHide={this.updateClose} > */}
+                                <Modal show={this.state.deletePopUp}  >
+
+                                    {/* <Modal.Header closeButton> */}
+                                    <Modal.Header >
+                                        <Modal.Title>Delete RC Assumptions</Modal.Title>
+                                    </Modal.Header>
+
+
+                                    <Modal.Body>
+                                        <div className="row">
+                                            <div className="col-md-12 center-block text-center">
+                                                <i className="fa fa-check fa-2x success-icon"></i>
+
+                                                <h4 className="text-center">{this.props.fetchRCAssumptionDeleteMsg}</h4>
+
+                                            </div>
+                                        </div>
+                                    </Modal.Body>
+
+
+                                    <Modal.Footer className="modal-footer text-center center-block">
+                                        <Button className="default-btn btnCenterPlace center-block"onClick={this.close.bind(this)}>Ok</Button>
+                                    </Modal.Footer>
+                                </Modal>
+                            </div>
+                        </div>
+                    </div>
+
             </div>
         );
     }

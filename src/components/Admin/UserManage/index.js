@@ -192,8 +192,8 @@ class UserManage extends Component {
                 </div>
 		</div>
         {/*  page start */}
-			<section className="panel mngusradjust">
-                    <header className="panel-heading main-bg">
+			<section className="panel">
+                    <header className="panel-heading main-bg mngusradjust">
                         Users List
                         
                     </header>

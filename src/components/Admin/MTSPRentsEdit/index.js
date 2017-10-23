@@ -59,59 +59,136 @@ class MTSPRentsEdit extends Component {
         var condtionCheck = true;
         var errors = [];
 
-        if (Area_Name.length === 0) {
+       if (Area_Name.length === 0) {
             condtionCheck = false;
             errors[0] = "Area_Name can't be empty"
 
         }
+        else {
+            if(!/^[\w()A-Za-z -.,!"'/$]*/.test(Area_Name))
+            {
+                condtionCheck = false;
+                errors[0] = "Area_Name should be only letters"
+            }
+        }
         if (Median_Income_2017.length === 0) {
             condtionCheck = false;
             errors[1] = "Median_Income_2017 can't be empty"
+        }
+        else{
+            if(!/^[0-9]\d*(\.\d+)?$/.test(Median_Income_2017))
+            {
+                condtionCheck = false;
+                errors[1] = "Median_Income_2017 should be numbers only"
+            }
         }
         if (Person_1.length === 0) {
             condtionCheck = false;
             errors[2] = "Person_1 can't be empty"
 
         }
+        else{
+            if(!/^[0-9]\d*(\.\d+)?$/.test(Person_1))
+            {
+                condtionCheck = false;
+                errors[2] = "Person_1 should be numbers only"
+            }
+        }
         if (People_2.length === 0) {
             condtionCheck = false;
             errors[3] = "People_2 can't be empty"
 
+        }
+        else{
+            if(!/^[0-9]\d*(\.\d+)?$/.test(People_2))
+            {
+                condtionCheck = false;
+                errors[3] = "People_2 should be numbers only"
+            }
         }
         if (People_3.length === 0) {
             condtionCheck = false;
             errors[4] = "People_3 can't be empty"
 
         }
+        else{
+            if(!/^[0-9]\d*(\.\d+)?$/.test(People_3))
+            {
+                condtionCheck = false;
+                errors[4] = "People_3 should be numbers only"
+            }
+        }
         if (People_4.length === 0) {
             condtionCheck = false;
             errors[5] = "People_4 can't be empty"
 
+        }
+        else{
+            if(!/^[0-9]\d*(\.\d+)?$/.test(People_4))
+            {
+                condtionCheck = false;
+                errors[5] = "People_4 should be numbers only"
+            }
         }
         if (People_5.length === 0) {
             condtionCheck = false;
             errors[6] = "People_5 can't be empty"
 
         }
+        else{
+            if(!/^[0-9]\d*(\.\d+)?$/.test(People_5))
+            {
+                condtionCheck = false;
+                errors[6] = "People_5 should be numbers only"
+            }
+        }
         if (People_6.length === 0) {
             condtionCheck = false;
             errors[7] = "People_6 can't be empty"
 
+        }
+        else{
+            if(!/^[0-9]\d*(\.\d+)?$/.test(People_6))
+            {
+                condtionCheck = false;
+                errors[7] = "People_6 should be numbers only"
+            }
         }
         if (People_7.length === 0) {
             condtionCheck = false;
             errors[8] = "People_7 can't be empty"
 
         }
+        else{
+            if(!/^[0-9]\d*(\.\d+)?$/.test(People_7))
+            {
+                condtionCheck = false;
+                errors[8] = "People_7 should be numbers only"
+            }
+        }
         if (People_8.length === 0) {
             condtionCheck = false;
             errors[9] = "People_8 can't be empty"
 
         }
+        else{
+            if(!/^[0-9]\d*(\.\d+)?$/.test(People_8))
+            {
+                condtionCheck = false;
+                errors[9] = "People_8 should be numbers only"
+            }
+        }
         if (State.length === 0) {
             condtionCheck = false;
             errors[10] = "State can't be empty"
 
+        }
+        else {
+            if(!/^[a-zA-Z ]*$/.test(State))
+            {
+                condtionCheck = false;
+                errors[10] = "State name should be only letters"
+            }
         }
 
         var obj = {
@@ -322,7 +399,7 @@ class MTSPRentsEdit extends Component {
 
                                                     <div className="col-md-12">
                                                         <div className=" pull-right profilebtns renovationcostadjustments_text">
-                                                            <button className="main-btn" onClick={this.MTSPreset.bind(this)}> Cancel </button>
+                                                            <button className="main-btn" onClick={this.MTSPreset.bind(this)}> Reset </button>
                                                             <button type="submit" className="main-btn btnreact"> Update </button>
                                                             {/* <a href="javascript:(void);" data-toggle="modal" data-target="#successmsg" className="main-btn btnreact">Update</a> */}
                                                         </div>
@@ -384,7 +461,7 @@ class MTSPRentsEdit extends Component {
                                 </Modal>
                             </div>
                         </div>
-                    </div> */}
+                    </div> 
                     {/* modal */}
 
 

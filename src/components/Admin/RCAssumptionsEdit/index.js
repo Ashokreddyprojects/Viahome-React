@@ -80,7 +80,14 @@ class RCAssumptionsEdit extends Component {
 							condtionCheck=false;
 							errors[2]="Price can't be empty"
 						
-						}
+                        }
+                        else{
+                            if(!/^[0-9]\d*(\.\d+)?$/.test(price))
+                            {
+                                condtionCheck = false;
+                                errors[2] = "Price should be numbers only"
+                            }
+                        }
 							
 						var obj={
 							errors:errors,
@@ -156,7 +163,7 @@ class RCAssumptionsEdit extends Component {
 			<div className="col-md-12">
                     <ul className="breadcrumbs-alt braeadcrumbs-dashboardresponsive">
                         <li>
-                            <Link to="AdminDashBoard" className="">Dashboard</Link>
+                            <Link to = {{pathname : "/AdminDashBoard", state: Name}}className="">Dashboard</Link>
                         </li>
                          <li>
                             <Link className="current" to="DashBoardRCAssumptionsEdit"> Update RC Assumptions</Link>
@@ -253,7 +260,7 @@ class RCAssumptionsEdit extends Component {
 										</div>
                                            <div className="col-md-12">
 									<div className=" pull-right profilebtns">
-										<button className="main-btn" onClick={this.RCAReset.bind(this)}> Cancel </button>
+										<button className="main-btn" onClick={this.RCAReset.bind(this)}> Reset </button>
                                          <button type="submit" className="main-btn btnreact"> Update </button>
 										{/* <a href="javascript:(void);" data-toggle="modal" data-target="#successmsg" className="main-btn btnreact">Update</a> */}
 									</div>
@@ -320,7 +327,7 @@ class RCAssumptionsEdit extends Component {
                                 </Modal>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
                     {/* modal */}
 
         

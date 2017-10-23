@@ -32,7 +32,7 @@ class register extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
 
-		console.log("Event data", event)
+	//	console.log("Event data", event)
 		const user = event.target;
 
 
@@ -44,7 +44,7 @@ class register extends Component {
 		let confirmpswd = user.confirmpswd.value;
 		let checkbox = user.checkbox.checked;
 
-		console.log("Checkbox value", checkbox)
+	//	console.log("Checkbox value", checkbox)
 
 
 		var condtionCheck = true;
@@ -55,17 +55,41 @@ class register extends Component {
 		// 	errors[0]="Value can't be empty"
 
 		// }
-		if (firstname.length === 0) {
+			if (firstname.length === 0) {
 			condtionCheck = false;
 			errors[0] = "Firstname can't be empty"
+		}
+		else {
+			if(!/^[a-zA-Z ]*$/.test(firstname))
+			{
+				condtionCheck = false;
+				errors[0] = "Firstname should be only letters"
+			}
 		}
 		if (lastname.length === 0) {
 			condtionCheck = false;
 			errors[1] = "Lastname can't be empty"
 		}
+		else {
+			if(!/^[a-zA-Z ]*$/.test(lastname))
+			{
+				condtionCheck = false;
+				errors[1] = "Lastname should be only letters"
+			}
+		}
 		if (email.length === 0) {
 			condtionCheck = false;
 			errors[2] = "Email is required"
+		}
+		else
+		{
+
+			  if (!/^.+@.+\..+$/.test(email)) {
+				  condtionCheck=false;
+				  errors[2]=email+ " is not a valid email.";
+				}
+
+
 		}
 		if (username.length === 0) {
 			condtionCheck = false;
@@ -83,7 +107,6 @@ class register extends Component {
 			condtionCheck = false;
 			errors[6] = "Please accept terms & conditions"
 		}
-
 		var obj = {
 			errors: errors,
 			condtionCheck: condtionCheck

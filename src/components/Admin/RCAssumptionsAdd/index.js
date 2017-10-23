@@ -67,7 +67,7 @@ class RCAssumptionsAdd extends Component {
 						// 	errors[0]="Value can't be empty"
 						
 						// }
-						if(Repair_Level.length === 0){
+							if(Repair_Level.length === 0){
 							condtionCheck=false;
 							errors[1]="Repair_Level can't be empty"
 						}
@@ -75,7 +75,14 @@ class RCAssumptionsAdd extends Component {
 							condtionCheck=false;
 							errors[2]="Price can't be empty"
 						
-						}
+                        }
+                        else{
+                            if(!/^[0-9]\d*(\.\d+)?$/.test(price))
+                            {
+                                condtionCheck = false;
+                                errors[2] = "Price should be numbers only"
+                            }
+                        }
 							
 						var obj={
 							errors:errors,
@@ -162,7 +169,7 @@ class RCAssumptionsAdd extends Component {
 
         <div className="row">
             
-            <div className="col-md-12">
+            <div className="col-md-12 rcasumptions-tableheads">
                 <section className="panel">
                     <header className="panel-heading main-bg">
                         Add Renovation Cost Assumptions
@@ -231,7 +238,7 @@ class RCAssumptionsAdd extends Component {
 										</div>
                                            <div className="col-md-12">
 									<div className="pull-right profilebtns">
-										 <button className="main-btn" onClick={this.RCAReset.bind(this)}> Cancel </button>
+										 <button className="main-btn" onClick={this.RCAReset.bind(this)}> Reset </button>
                                           <button type="submit" className="main-btn btnreact"> Add </button>
 										{/* <a href="javascript:(void);" data-toggle="modal" data-target="#successmsg" className="main-btn btnreact">Add</a> */}
 									</div>
@@ -301,7 +308,7 @@ class RCAssumptionsAdd extends Component {
                                 </Modal>
                             </div>
                         </div>
-                    </div> */}
+                    </div> 
                     {/* modal */}
         
       </div>
